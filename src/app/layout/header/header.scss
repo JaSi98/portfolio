@@ -1,0 +1,176 @@
+@use '../../../styles/abstracts/colors' as *;
+@use '../../../styles/abstracts/typography' as *;
+@use '../../../styles/abstracts/layout' as *;
+@use '../../../styles/abstracts/mixins' as *;
+
+$header-padding-block: fluid(16px, 20px);
+$logo-size: fluid(52px, 64px);
+$nav-gap: fluid(40px, 80px);
+$underline-height: 3px;
+$underline-offset: 4px;
+$burger-width: 30px;
+$burger-line-height: 2px;
+$burger-line-gap: 8px;
+$burger-touch-size: 44px;
+$menu-link-gap: 33px;
+$menu-padding-top: 290px;
+$menu-padding-inline: 28vw;
+$header-layer: 10;
+$menu-layer: 5;
+
+:host {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: $header-layer;
+}
+
+.header {
+  @include content-width;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: $header-padding-block;
+}
+
+.header__logo {
+  position: relative;
+  z-index: $header-layer;
+  display: block;
+  color: $color-white;
+  transition: color $motion-duration $motion-easing;
+}
+
+.header--menu-open .header__logo {
+  color: $color-primary;
+}
+
+.header__logo-mark {
+  width: $logo-size;
+  height: $logo-size;
+}
+
+.header__logo-label,
+.header__burger-label {
+  @include visually-hidden;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: $nav-gap;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.header__links {
+  display: flex;
+  gap: $nav-gap;
+}
+
+// Underline that grows from the left on hover and keyboard focus.
+.header__link {
+  position: relative;
+  color: $color-primary;
+  font-size: font-size(lead);
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -$underline-offset;
+    width: 100%;
+    height: $underline-height;
+    border-radius: $underline-height;
+    background-color: $color-primary-dark;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $motion-duration $motion-easing;
+  }
+
+  @include hover {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+
+.header__burger {
+  position: relative;
+  z-index: $header-layer;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: $burger-line-gap;
+  width: $burger-touch-size;
+  height: $burger-touch-size;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+
+  @include mobile {
+    display: flex;
+  }
+}
+
+.header__burger-line {
+  width: $burger-width;
+  height: $burger-line-height;
+  border-radius: $burger-line-height;
+  background-color: $color-primary;
+  transition:
+    transform $motion-duration $motion-easing,
+    opacity $motion-duration $motion-easing;
+}
+
+// The burger turns into a cross while the menu is open.
+$line-shift: $burger-line-gap + $burger-line-height;
+
+.header--menu-open .header__burger-line {
+  &:nth-child(1) {
+    transform: translateY($line-shift) rotate(45deg);
+  }
+
+  &:nth-child(2) {
+    opacity: 0;
+  }
+
+  &:nth-child(3) {
+    transform: translateY(-$line-shift) rotate(-45deg);
+  }
+}
+
+.mobile-menu {
+  @include reveal-hidden(translateY(-16px));
+  position: fixed;
+  inset: 0;
+  z-index: $menu-layer;
+  display: flex;
+  flex-direction: column;
+  gap: $menu-link-gap;
+  padding: $menu-padding-top $menu-padding-inline;
+  background: $gradient-hero;
+  overflow-y: auto;
+
+  &--open {
+    @include reveal-visible;
+  }
+}
+
+.mobile-menu__links {
+  display: flex;
+  flex-direction: column;
+  gap: $menu-link-gap;
+}
+
+.mobile-menu__link {
+  display: inline-block;
+}

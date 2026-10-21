@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="442 1 30 49" fill="none"><defs>
+<radialGradient id="paint0_radial_105205_2303" cx="0" cy="0" r="1" gradientTransform="matrix(24.12 21.1435 -17.1791 29.6861 6.43077 16.9686)" gradientUnits="userSpaceOnUse">
+<stop offset="0.0625" stop-color="#5988FF" />
+<stop offset="0.515625" stop-color="#5988FF" />
+<stop offset="1" stop-color="#0043F0" />
+</radialGradient>
+<radialGradient id="paint1_radial_105205_2303" cx="0" cy="0" r="1" gradientTransform="matrix(22.6161 10.4597 -16.108 14.6858 227.891 25.5748)" gradientUnits="userSpaceOnUse">
+<stop offset="0.0625" stop-color="#5988FF" />
+<stop offset="0.515625" stop-color="#5988FF" />
+<stop offset="1" stop-color="#0043F0" />
+</radialGradient>
+<radialGradient id="paint2_radial_105205_2303" cx="0" cy="0" r="1" gradientTransform="matrix(27.527 2.37645 -19.6057 3.33661 225.828 43.5013)" gradientUnits="userSpaceOnUse">
+<stop offset="0.0625" stop-color="#5988FF" />
+<stop offset="0.515625" stop-color="#5988FF" />
+<stop offset="1" stop-color="#0043F0" />
+</radialGradient>
+<radialGradient id="paint3_radial_105205_2303" cx="0" cy="0" r="1" gradientTransform="matrix(22.2646 17.9047 -15.8576 25.1388 447.936 18.4864)" gradientUnits="userSpaceOnUse">
+<stop offset="0.0625" stop-color="#5988FF" />
+<stop offset="0.515625" stop-color="#5988FF" />
+<stop offset="1" stop-color="#0043F0" />
+</radialGradient>
+</defs>
+<ellipse cx="3.46154" cy="3.30082" rx="3.46154" ry="3.30082" transform="matrix(0.990909 0.134535 -0.169599 0.985513 445.427 42.5505)" fill="#75BCE4" />
+<ellipse cx="3.46154" cy="3.30082" rx="3.46154" ry="3.30082" transform="matrix(0.990909 0.134535 -0.169599 0.985513 462.638 42.5505)" fill="#75BCE4" />
+<path d="M450.923 2.01208H463.077C463.629 2.01208 464.077 2.4598 464.077 3.01208V14.5371C464.077 15.0894 463.629 15.5371 463.077 15.5371H450.923C450.371 15.5371 449.923 15.0894 449.923 14.5371V3.01208C449.923 2.4598 450.371 2.01208 450.923 2.01208Z" stroke-width="2" stroke="#75BCE4" />
+<rect x="442" y="10.8916" width="30" height="33.8728" rx="2" fill="url(#paint3_radial_105205_2303)" />
+</svg>

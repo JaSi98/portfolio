@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 70 30 30" fill="none"><defs>
+<radialGradient id="paint0_radial_257_640" cx="0" cy="0" r="1" gradientTransform="matrix(22.2646 15.466 -15.8576 21.7148 15.9361 11.9307)" gradientUnits="userSpaceOnUse">
+<stop offset="0.0625" stop-color="#5988FF" />
+<stop offset="0.515625" stop-color="#5988FF" />
+<stop offset="1" stop-color="#0043F0" />
+</radialGradient>
+<radialGradient id="paint1_radial_257_640" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(15.9361 76.7265) rotate(35.4598) scale(27.3345)">
+<stop offset="0.0625" stop-color="#5988FF" />
+<stop offset="0.515625" stop-color="#5988FF" />
+<stop offset="1" stop-color="#0043F0" />
+</radialGradient>
+<radialGradient id="paint2_radial_257_640" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(15.9361 141.726) rotate(35.4598) scale(27.3345)">
+<stop offset="0.0625" stop-color="#5988FF" />
+<stop offset="0.515625" stop-color="#5988FF" />
+<stop offset="1" stop-color="#0043F0" />
+</radialGradient>
+</defs>
+<path d="M25 70C16.7 70 10 76.7 10 85C10 93.3 16.7 100 25 100C33.3 100 40 93.3 40 85C40 76.7 33.3 70 25 70ZM34 90.6C34 91.1 33.6 91.5 33.1 91.5H17C16.4 91.5 16 91 16 90.5V80.8L25 85.5L34 80.8V90.6ZM34 79.7L25 84.4L16 79.7V79.5C16 79 16.4 78.5 17 78.5H33C33.6 78.5 34 79 34 79.5V79.7Z" fill="url(#paint1_radial_257_640)" />
+</svg>

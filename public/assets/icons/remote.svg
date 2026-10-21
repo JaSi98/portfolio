@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="207 6 49 41" fill="none"><defs>
+<radialGradient id="paint0_radial_105205_2303" cx="0" cy="0" r="1" gradientTransform="matrix(24.12 21.1435 -17.1791 29.6861 6.43077 16.9686)" gradientUnits="userSpaceOnUse">
+<stop offset="0.0625" stop-color="#5988FF" />
+<stop offset="0.515625" stop-color="#5988FF" />
+<stop offset="1" stop-color="#0043F0" />
+</radialGradient>
+<radialGradient id="paint1_radial_105205_2303" cx="0" cy="0" r="1" gradientTransform="matrix(22.6161 10.4597 -16.108 14.6858 227.891 25.5748)" gradientUnits="userSpaceOnUse">
+<stop offset="0.0625" stop-color="#5988FF" />
+<stop offset="0.515625" stop-color="#5988FF" />
+<stop offset="1" stop-color="#0043F0" />
+</radialGradient>
+<radialGradient id="paint2_radial_105205_2303" cx="0" cy="0" r="1" gradientTransform="matrix(27.527 2.37645 -19.6057 3.33661 225.828 43.5013)" gradientUnits="userSpaceOnUse">
+<stop offset="0.0625" stop-color="#5988FF" />
+<stop offset="0.515625" stop-color="#5988FF" />
+<stop offset="1" stop-color="#0043F0" />
+</radialGradient>
+<radialGradient id="paint3_radial_105205_2303" cx="0" cy="0" r="1" gradientTransform="matrix(22.2646 17.9047 -15.8576 25.1388 447.936 18.4864)" gradientUnits="userSpaceOnUse">
+<stop offset="0.0625" stop-color="#5988FF" />
+<stop offset="0.515625" stop-color="#5988FF" />
+<stop offset="1" stop-color="#0043F0" />
+</radialGradient>
+</defs>
+<path d="M221.861 23.138C221.861 22.0334 222.756 21.138 223.861 21.138H250.335C251.439 21.138 252.335 22.0334 252.335 23.138V40.9261H221.861V23.138Z" fill="#1E0A7D" />
+<mask id="stroke0_105205_2303" fill="white">
+<path d="M221.861 23.138C221.861 22.0334 222.756 21.138 223.861 21.138H250.335C251.439 21.138 252.335 22.0334 252.335 23.138V40.9261H221.861V23.138Z" />
+</mask>
+<path d="M252.335 40.9261V23.138C252.335 22.0334 251.439 21.138 250.335 21.138H223.861C222.756 21.138 221.861 22.0334 221.861 23.138V40.9261H252.335Z" stroke-width="3" stroke="url(#paint1_radial_105205_2303)" mask="url(#stroke0_105205_2303)" />
+<path d="M218.489 42.4933H255.58V43.9891C255.58 45.646 254.237 46.9891 252.58 46.9891H221.489C219.832 46.9891 218.489 45.646 218.489 43.9891V42.4933Z" fill="url(#paint2_radial_105205_2303)" />
+<rect x="234.225" y="43.6173" width="6.74379" height="1.12396" rx="0.561982" fill="#140754" />
+<path d="M224.489 13.5133C217.989 12.5133 215.489 16.0132 214.715 22.0278" stroke-width="2" stroke-linecap="round" stroke="#75BCE4" />
+<path d="M224.989 8.01324C214.926 7.0474 209.231 13.0162 208.828 21.8931" stroke-width="2" stroke-linecap="round" stroke="#75BCE4" />
+</svg>

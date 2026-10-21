@@ -1,0 +1,24 @@
+<ul class="language-switch" i18n-aria-label="@@language.switch" aria-label="Language">
+  @for (locale of locales; track locale.code; let isLast = $last) {
+    <li class="language-switch__item">
+      @if (locale.code === currentCode) {
+        <span class="language-switch__option language-switch__option--active" aria-current="true">
+          {{ locale.label }}
+        </span>
+      } @else {
+        <a
+          class="language-switch__option"
+          [href]="hrefFor(locale)"
+          [attr.hreflang]="locale.code"
+          [attr.lang]="locale.code"
+          [attr.aria-label]="locale.name"
+        >
+          {{ locale.label }}
+        </a>
+      }
+      @if (!isLast) {
+        <span class="language-switch__divider" aria-hidden="true">/</span>
+      }
+    </li>
+  }
+</ul>

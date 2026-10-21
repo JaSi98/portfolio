@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="71" height="75" viewBox="108 236 71 75" fill="none"><defs>
+<filter id="filter0_d_230_504" x="850.25" y="217" width="94.25" height="139.08" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix" />
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+<feOffset dy="4" />
+<feGaussianBlur stdDeviation="4.5" />
+<feComposite in2="hardAlpha" operator="out" />
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.45 0" />
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_230_504" />
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_230_504" result="shape" />
+</filter>
+<linearGradient id="paint0_linear_230_504" x1="990.78" y1="88.502" x2="1017.71" y2="99.7925" gradientUnits="userSpaceOnUse">
+<stop stop-color="#CCCECE" />
+<stop offset="1" stop-color="white" />
+</linearGradient>
+<linearGradient id="paint1_linear_230_504" x1="992.066" y1="60.614" x2="1004.35" y2="83.7312" gradientUnits="userSpaceOnUse">
+<stop />
+<stop offset="1" stop-opacity="0" />
+</linearGradient>
+<linearGradient id="paint2_linear_230_504" x1="898" y1="313.382" x2="898.002" y2="340.073" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" />
+<stop offset="1" stop-color="#EAF0FF" />
+</linearGradient>
+<clipPath id="clip0_230_504">
+<rect width="71" height="75" fill="white" transform="translate(7.5 46)" />
+</clipPath>
+</defs>
+<path d="M177.677 270.197L146.632 237.407C144.856 235.531 141.922 235.531 140.145 237.407L133.736 244.177L141.922 252.823C143.852 252.17 146.015 252.578 147.482 254.21C149.026 255.841 149.413 258.125 148.795 260.164L156.672 268.484C158.602 267.831 160.765 268.239 162.309 269.87C164.472 272.073 164.472 275.743 162.309 278.027C160.147 280.311 156.749 280.311 154.587 278.027C152.965 276.314 152.579 273.867 153.428 271.746L146.092 263.998V284.389C146.632 284.634 147.096 285.042 147.559 285.449C149.721 287.652 149.721 291.322 147.559 293.606C145.397 295.808 141.999 295.808 139.837 293.606C137.674 291.322 137.674 287.733 139.837 285.449C140.377 284.878 140.995 284.471 141.613 284.226V263.59C140.995 263.345 140.377 262.856 139.837 262.366C138.215 260.653 137.829 258.206 138.678 256.086L130.569 247.603L109.332 270.033C107.556 271.909 107.556 275.009 109.332 276.885L140.3 309.593C142.076 311.469 145.011 311.469 146.787 309.593L177.6 277.048C179.454 275.091 179.454 272.073 177.677 270.197Z" fill="white" />
+</svg>

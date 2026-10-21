@@ -1,0 +1,36 @@
+@use '../styles/abstracts/colors' as *;
+@use '../styles/abstracts/layout' as *;
+@use '../styles/abstracts/mixins' as *;
+
+$skip-link-offset: 12px;
+$skip-link-padding: 12px 20px;
+$skip-link-layer: 20;
+
+:host {
+  display: contents;
+}
+
+// Hidden until a keyboard user tabs to it, then it jumps over the navigation.
+.skip-link {
+  @include visually-hidden;
+
+  &:focus-visible {
+    position: fixed;
+    top: $skip-link-offset;
+    left: $skip-link-offset;
+    z-index: $skip-link-layer;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: $skip-link-padding;
+    clip-path: none;
+    border-radius: $radius-m;
+    background-color: $color-white;
+    color: $color-primary-dark;
+  }
+}
+
+.main {
+  flex: 1;
+  outline: none;
+}

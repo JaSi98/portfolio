@@ -1,0 +1,38 @@
+@use '../../../styles/abstracts/colors' as *;
+@use '../../../styles/abstracts/typography' as *;
+@use '../../../styles/abstracts/mixins' as *;
+
+$underline-height: 3px;
+$underline-offset: 4px;
+$divider-gap: 8px;
+
+.language-switch {
+  display: flex;
+  align-items: baseline;
+  color: $color-primary;
+  font-size: font-size(lead);
+}
+
+.language-switch__item {
+  display: flex;
+  align-items: baseline;
+}
+
+.language-switch__divider {
+  margin-inline: $divider-gap;
+}
+
+.language-switch__option {
+  text-decoration: none;
+  transition: color $motion-duration $motion-easing;
+
+  @include hover {
+    color: $color-primary-dark;
+  }
+
+  &--active {
+    font-weight: $font-weight-bold;
+    text-decoration: underline $underline-height $color-primary-dark;
+    text-underline-offset: $underline-offset;
+  }
+}

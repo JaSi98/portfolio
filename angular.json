@@ -24,7 +24,7 @@
         },
         "locales": {
           "de": {
-            "translation": "src/locale/messages.de.xlf",
+            "translation": "src/locale/messages.de.json",
             "subPath": "de"
           }
         }
@@ -97,7 +97,7 @@
           "builder": "@angular/build:extract-i18n",
           "options": {
             "outputPath": "src/locale",
-            "format": "xlf2"
+            "format": "json"
           }
         },
         "test": {

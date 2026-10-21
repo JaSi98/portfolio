@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="676 217 75 75" fill="none"><defs>
+<filter id="filter0_d_230_504" x="850.25" y="217" width="94.25" height="139.08" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix" />
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+<feOffset dy="4" />
+<feGaussianBlur stdDeviation="4.5" />
+<feComposite in2="hardAlpha" operator="out" />
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.45 0" />
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_230_504" />
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_230_504" result="shape" />
+</filter>
+<linearGradient id="paint0_linear_230_504" x1="990.78" y1="88.502" x2="1017.71" y2="99.7925" gradientUnits="userSpaceOnUse">
+<stop stop-color="#CCCECE" />
+<stop offset="1" stop-color="white" />
+</linearGradient>
+<linearGradient id="paint1_linear_230_504" x1="992.066" y1="60.614" x2="1004.35" y2="83.7312" gradientUnits="userSpaceOnUse">
+<stop />
+<stop offset="1" stop-opacity="0" />
+</linearGradient>
+<linearGradient id="paint2_linear_230_504" x1="898" y1="313.382" x2="898.002" y2="340.073" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" />
+<stop offset="1" stop-color="#EAF0FF" />
+</linearGradient>
+<clipPath id="clip0_230_504">
+<rect width="71" height="75" fill="white" transform="translate(7.5 46)" />
+</clipPath>
+</defs>
+<path d="M685.875 229.25V279.875C679.75 273.125 676 264.25 676 254.5C676 244.75 679.75 235.875 685.875 229.25Z" fill="white" />
+<path d="M689.875 234.75L711.5 278.125H689.875V234.75Z" fill="white" />
+<path d="M713.5 273.25L692.25 230.875H734.75L713.5 273.25Z" fill="white" />
+<path d="M713.5 217C723.25 217 732.125 220.75 738.75 226.875H688.25C694.875 220.75 703.75 217 713.5 217Z" fill="white" />
+<path d="M737.125 278.125H715.5L737.125 234.75V278.125Z" fill="white" />
+<path d="M738.75 282.125C732.125 288.25 723.25 292 713.5 292C703.75 292 694.875 288.25 688.25 282.125H738.75Z" fill="white" />
+<path d="M741.125 279.75V229.25C747.25 235.875 751 244.75 751 254.5C751 264.25 747.25 273.125 741.125 279.75Z" fill="white" />
+<path d="M689.875 234.75L711.5 278.125H689.875V234.75Z" fill="white" />
+<path d="M713.5 273.25L692.25 230.875H734.75L713.5 273.25Z" fill="white" />
+<path d="M715.5 278.125L737.125 234.75V278.125H715.5Z" fill="white" />
+<path d="M692.25 230.875H734.75L713.5 273.25L692.25 230.875Z" fill="white" />
+</svg>

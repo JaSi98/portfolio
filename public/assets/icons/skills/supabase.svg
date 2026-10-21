@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="73.3333" height="75" viewBox="957 46 73.3333 75" fill="none"><defs>
+<filter id="filter0_d_230_504" x="850.25" y="217" width="94.25" height="139.08" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix" />
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+<feOffset dy="4" />
+<feGaussianBlur stdDeviation="4.5" />
+<feComposite in2="hardAlpha" operator="out" />
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.45 0" />
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_230_504" />
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_230_504" result="shape" />
+</filter>
+<linearGradient id="paint0_linear_230_504" x1="990.78" y1="88.502" x2="1017.71" y2="99.7925" gradientUnits="userSpaceOnUse">
+<stop stop-color="#CCCECE" />
+<stop offset="1" stop-color="white" />
+</linearGradient>
+<linearGradient id="paint1_linear_230_504" x1="992.066" y1="60.614" x2="1004.35" y2="83.7312" gradientUnits="userSpaceOnUse">
+<stop />
+<stop offset="1" stop-opacity="0" />
+</linearGradient>
+<linearGradient id="paint2_linear_230_504" x1="898" y1="313.382" x2="898.002" y2="340.073" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" />
+<stop offset="1" stop-color="#EAF0FF" />
+</linearGradient>
+<clipPath id="clip0_230_504">
+<rect width="71" height="75" fill="white" transform="translate(7.5 46)" />
+</clipPath>
+</defs>
+<path d="M999.732 119.754C997.816 122.166 993.929 120.846 993.882 117.764L993.206 72.702H1023.51C1028.99 72.702 1032.06 79.0407 1028.65 83.3358L999.732 119.754Z" fill="url(#paint0_linear_230_504)" />
+<path d="M999.732 119.754C997.816 122.166 993.929 120.846 993.882 117.764L993.206 72.702H1023.51C1028.99 72.702 1032.06 79.0407 1028.65 83.3358L999.732 119.754Z" fill="url(#paint1_linear_230_504)" fill-opacity="0.2" />
+<path d="M987.409 47.2463C989.326 44.834 993.212 46.1541 993.259 49.2364L993.554 94.298H963.636C958.148 94.298 955.086 87.9592 958.496 83.6641L987.409 47.2463Z" fill="white" />
+</svg>

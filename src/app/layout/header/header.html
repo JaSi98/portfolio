@@ -1,0 +1,56 @@
+<header class="header" [class.header--menu-open]="isMenuOpen()">
+  <a class="header__logo" routerLink="/" (click)="closeMenu()">
+    <svg class="header__logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+      <use href="assets/logo/logo.svg#icon"></use>
+    </svg>
+    <span class="header__logo-label" i18n="@@header.home">Jan Sippl – home</span>
+  </a>
+
+  <nav class="header__nav" i18n-aria-label="@@header.navigation" aria-label="Main navigation">
+    <ul class="header__links">
+      @for (item of items; track item.fragment) {
+        <li>
+          <a class="header__link" routerLink="/" [fragment]="item.fragment">{{ item.label }}</a>
+        </li>
+      }
+    </ul>
+    <app-language-switch />
+  </nav>
+
+  <button
+    class="header__burger"
+    type="button"
+    aria-controls="mobile-menu"
+    [attr.aria-expanded]="isMenuOpen()"
+    (click)="toggleMenu()"
+  >
+    <span class="header__burger-line" aria-hidden="true"></span>
+    <span class="header__burger-line" aria-hidden="true"></span>
+    <span class="header__burger-line" aria-hidden="true"></span>
+    <span class="header__burger-label" i18n="@@header.menu">Menu</span>
+  </button>
+
+  <nav
+    class="mobile-menu"
+    id="mobile-menu"
+    [class.mobile-menu--open]="isMenuOpen()"
+    i18n-aria-label="@@header.mobileNavigation"
+    aria-label="Mobile navigation"
+  >
+    <ul class="mobile-menu__links">
+      @for (item of menuItems; track item.fragment) {
+        <li>
+          <a
+            class="header__link mobile-menu__link"
+            routerLink="/"
+            [fragment]="item.fragment"
+            (click)="closeMenu()"
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+    <app-language-switch class="mobile-menu__language" />
+  </nav>
+</header>

@@ -1,0 +1,20 @@
+<ul class="social-links__list">
+  <li>
+    <a class="social-links__link" [href]="github.url" target="_blank" rel="noopener noreferrer">
+      <img class="social-links__icon" [src]="github.icon" alt="" width="30" height="30" />
+      <span class="social-links__label">{{ github.label }}</span>
+    </a>
+  </li>
+  <li>
+    <a class="social-links__link" routerLink="/" [fragment]="contactSection">
+      <img class="social-links__icon" [src]="mailIcon" alt="" width="30" height="30" />
+      <span class="social-links__label" i18n="@@social.contact">Contact form</span>
+    </a>
+  </li>
+  <li>
+    <a class="social-links__link" [href]="linkedIn.url" target="_blank" rel="noopener noreferrer">
+      <img class="social-links__icon" [src]="linkedIn.icon" alt="" width="30" height="30" />
+      <span class="social-links__label">{{ linkedIn.label }}</span>
+    </a>
+  </li>
+</ul>

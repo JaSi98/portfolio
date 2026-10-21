@@ -1,0 +1,22 @@
+{
+  "locale": "en",
+  "translations": {
+    "app.skipLink": "Skip to content",
+    "page.home.title": "Jan Sippl – Frontend Developer",
+    "nav.about": "About me",
+    "nav.skills": "Skill set",
+    "nav.projects": "My work",
+    "nav.contact": "Contact",
+    "header.home": "Jan Sippl – home",
+    "header.navigation": "Main navigation",
+    "header.menu": "Menu",
+    "header.mobileNavigation": "Mobile navigation",
+    "language.switch": "Language",
+    "hero.photoAlt": "Portrait of Jan Sippl",
+    "hero.greeting": "Hello! I am Jan",
+    "hero.title": "Frontend Developer",
+    "hero.scroll": "Scroll",
+    "hero.scrollDown": "Scroll down",
+    "social.contact": "Contact form"
+  }
+}

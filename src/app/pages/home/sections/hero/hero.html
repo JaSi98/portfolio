@@ -1,0 +1,32 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__circle" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <img
+      class="hero__photo"
+      src="assets/img/portrait-placeholder.svg"
+      i18n-alt="@@hero.photoAlt"
+      alt="Portrait of Jan Sippl"
+      width="761"
+      height="917"
+      fetchpriority="high"
+    />
+
+    <h1 class="hero__heading" id="hero-title">
+      <span class="hero__greeting" i18n="@@hero.greeting">Hello! I am Jan</span>
+      <span class="hero__title" i18n="@@hero.title">Frontend Developer</span>
+    </h1>
+
+    <a class="hero__scroll" routerLink="/" [fragment]="nextSection">
+      <span class="hero__scroll-label hero__scroll-label--desktop" i18n="@@hero.scroll">Scroll</span>
+      <span class="hero__scroll-label hero__scroll-label--mobile" i18n="@@hero.scrollDown"
+        >Scroll down</span
+      >
+      <span class="hero__scroll-line" aria-hidden="true"></span>
+      <svg class="hero__scroll-arrow" viewBox="0 -960 960 960" aria-hidden="true">
+        <use href="assets/icons/arrow-up.svg#icon"></use>
+      </svg>
+    </a>
+
+    <app-social-links class="hero__social" />
+  </div>
+</section>

@@ -1,0 +1,206 @@
+@use 'sass:math';
+@use '../../../../../styles/abstracts/colors' as *;
+@use '../../../../../styles/abstracts/typography' as *;
+@use '../../../../../styles/abstracts/layout' as *;
+@use '../../../../../styles/abstracts/mixins' as *;
+
+// Positions of the design frame (1440 × 1024), as shares of width and height.
+$design-width: 1440;
+$design-height: 1024;
+$hero-min-height: 640px;
+$photo-height: math.percentage(math.div(917, $design-height));
+$photo-max-width: math.percentage(math.div(761, $design-width));
+$photo-left: math.percentage(math.div(32, $design-width));
+$heading-top: math.percentage(math.div(227, $design-height));
+$heading-right: math.percentage(math.div(64, $design-width));
+$heading-max-width: math.percentage(math.div(645, $design-width));
+$scroll-left: math.percentage(math.div(1034, $design-width));
+$scroll-top: math.percentage(math.div(656, $design-height));
+$social-right: math.percentage(math.div(100, $design-width));
+$social-top: math.percentage(math.div(789, $design-height));
+$circle-size: math.percentage(math.div(892, $design-width));
+$circle-left: math.percentage(math.div(-199, $design-width));
+$circle-top: math.div(-71, $design-width) * 100vw;
+
+$title-letter-spacing: -0.025em;
+$scroll-gap: 10px;
+$line-width: 2px;
+$arrow-size: 24px;
+
+// Phone layout: the circle fills the top, the portrait stands at the bottom.
+$mobile-circle-size: 167vw;
+$mobile-circle-left: -68vw;
+$mobile-circle-top: -16vw;
+$mobile-heading-top: 140px;
+$mobile-photo-height: 62%;
+$mobile-scroll-right: 6px;
+$mobile-scroll-bottom: 24px;
+
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: $hero-min-height;
+  overflow: hidden;
+  border-bottom: $line-width solid $color-primary;
+  background: $gradient-hero;
+}
+
+.hero__inner {
+  position: relative;
+  height: 100%;
+  max-width: $content-max-width;
+  margin-inline: auto;
+}
+
+.hero__circle {
+  position: absolute;
+  top: $circle-top;
+  left: calc(50% - #{math.div($content-max-width, 2)} + #{$circle-left});
+  width: min($circle-size, #{$content-max-width * math.div(892, $design-width)});
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: $gradient-circle;
+
+  @include tablet {
+    left: $circle-left;
+  }
+
+  @include mobile {
+    top: $mobile-circle-top;
+    left: $mobile-circle-left;
+    width: $mobile-circle-size;
+  }
+}
+
+.hero__photo {
+  position: absolute;
+  left: $photo-left;
+  bottom: 0;
+  height: $photo-height;
+  width: auto;
+  max-width: $photo-max-width;
+  object-fit: contain;
+  object-position: bottom;
+
+  @include mobile {
+    left: 50%;
+    max-width: 100%;
+    height: $mobile-photo-height;
+    transform: translateX(-50%);
+  }
+}
+
+.hero__heading {
+  position: absolute;
+  top: $heading-top;
+  right: $heading-right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: $heading-max-width;
+  color: $color-primary;
+  font-weight: $font-weight-regular;
+  text-align: right;
+
+  @include mobile {
+    top: $mobile-heading-top;
+    left: $page-padding-inline;
+    right: $page-padding-inline;
+    align-items: flex-start;
+    max-width: none;
+    color: $color-white;
+    text-align: left;
+  }
+}
+
+.hero__greeting {
+  font-size: font-size(hero-greeting);
+  line-height: $line-height-tight;
+}
+
+.hero__title {
+  font-family: $font-family-display;
+  font-size: font-size(hero-title);
+  font-weight: $font-weight-display;
+  line-height: $line-height-tight;
+  letter-spacing: $title-letter-spacing;
+  text-transform: uppercase;
+}
+
+.hero__scroll {
+  position: absolute;
+  top: $scroll-top;
+  bottom: 0;
+  left: $scroll-left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $scroll-gap;
+  color: $color-primary;
+  font-size: font-size(lead);
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+
+  @include hover {
+    .hero__scroll-line {
+      transform: scaleY(0.85);
+    }
+  }
+
+  @include mobile {
+    top: auto;
+    left: auto;
+    right: $mobile-scroll-right;
+    bottom: $mobile-scroll-bottom;
+    flex-direction: row;
+    font-family: $font-family-button;
+    font-weight: $font-weight-regular;
+    text-transform: none;
+    writing-mode: vertical-rl;
+    transform: none;
+  }
+}
+
+.hero__scroll-label--mobile,
+.hero__scroll-arrow {
+  display: none;
+
+  @include mobile {
+    display: block;
+  }
+}
+
+.hero__scroll-label--desktop,
+.hero__scroll-line {
+  @include mobile {
+    display: none;
+  }
+}
+
+.hero__scroll-line {
+  flex: 1;
+  width: $line-width;
+  background-color: $color-primary;
+  transform-origin: top;
+  transition: transform $motion-duration $motion-easing;
+}
+
+.hero__scroll-arrow {
+  width: $arrow-size;
+  height: $arrow-size;
+  fill: currentColor;
+  transform: rotate(180deg);
+}
+
+.hero__social {
+  position: absolute;
+  top: $social-top;
+  right: $social-right;
+
+  @include mobile {
+    display: none;
+  }
+}

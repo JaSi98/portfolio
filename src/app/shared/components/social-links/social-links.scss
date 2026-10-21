@@ -1,0 +1,43 @@
+@use '../../../../styles/abstracts/mixins' as *;
+
+$icon-size: 30px;
+$link-size: 40px;
+$gap: 25px;
+$hover-scale: 1.15;
+
+:host {
+  display: block;
+}
+
+.social-links__list {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+:host(.social-links--row) .social-links__list {
+  flex-direction: row;
+}
+
+.social-links__link {
+  @include flex-center;
+  width: $link-size;
+  height: $link-size;
+  border-radius: 50%;
+
+  @include hover {
+    .social-links__icon {
+      transform: scale($hover-scale);
+    }
+  }
+}
+
+.social-links__icon {
+  width: $icon-size;
+  height: $icon-size;
+  transition: transform $motion-duration $motion-easing;
+}
+
+.social-links__label {
+  @include visually-hidden;
+}
