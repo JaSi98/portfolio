@@ -1,0 +1,11 @@
+@use 'colors' as *;
+
+// Decorative blue sphere; size and position come from the section that places it.
+@mixin sphere($size) {
+  position: absolute;
+  width: $size;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: $gradient-circle;
+  pointer-events: none;
+}

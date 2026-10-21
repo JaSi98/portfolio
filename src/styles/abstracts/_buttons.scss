@@ -1,0 +1,77 @@
+@use 'colors' as *;
+@use 'typography' as *;
+@use 'layout' as *;
+@use 'mixins' as *;
+
+$button-padding: 15px 30px;
+$button-border-width: 2px;
+$button-hover-scale: 1.06;
+$button-shadow: 5px 5px 15px $color-shadow;
+$button-fill-skew: -20deg;
+
+// Outlined button that fills with the brand gradient on hover and darkens while pressed.
+@mixin button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: $button-padding;
+  border: $button-border-width solid $color-primary;
+  border-radius: $radius-m;
+  background-color: $color-white;
+  color: $color-primary;
+  font-family: $font-family-button;
+  font-size: font-size(lead);
+  line-height: $line-height-base;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: $button-shadow;
+  transition:
+    color $motion-duration $motion-easing,
+    transform $motion-duration $motion-easing;
+
+  // The gradient sweeps in from the left.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 -20%;
+    z-index: -1;
+    background: $gradient-circle;
+    transform: translateX(-110%) skewX($button-fill-skew);
+    transition: transform $motion-duration $motion-easing;
+  }
+
+  @include hover {
+    color: $color-white;
+    transform: scale($button-hover-scale);
+
+    &::before {
+      transform: translateX(0) skewX($button-fill-skew);
+    }
+  }
+
+  &:active:not(:disabled) {
+    border-color: $color-primary-dark;
+    background-color: $color-primary-dark;
+    color: $color-white;
+
+    &::before {
+      opacity: 0;
+    }
+  }
+
+  &:disabled {
+    border-color: $color-disabled;
+    color: $color-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// Filled variant for the main action of a card.
+@mixin button-filled {
+  border-color: $color-primary;
+  background-color: $color-primary;
+  color: $color-white;
+}

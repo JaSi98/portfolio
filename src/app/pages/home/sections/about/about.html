@@ -1,0 +1,34 @@
+<section class="about" [id]="sectionId" aria-labelledby="about-title">
+  <span class="about__sphere about__sphere--large" aria-hidden="true"></span>
+  <span class="about__sphere about__sphere--small" aria-hidden="true"></span>
+
+  <div class="about__intro">
+    <h2 class="about__title" id="about-title" i18n="@@about.title">Let's work together</h2>
+    <h3 class="about__subtitle" i18n="@@about.iAm">I am</h3>
+    <ul class="about__facts">
+      @for (item of availability; track item.icon) {
+        <li class="about__fact">
+          <img class="about__fact-icon" [src]="item.icon" alt="" width="40" height="40" />
+          <span>{{ item.label }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="about__text">
+    <p i18n="@@about.passion">
+      I am a frontend developer in training at the Developer Akademie. What fascinates me about
+      programming is turning an idea into something people can click, test and use – on every
+      screen size. I build with Angular and TypeScript, connect apps to Supabase and automate
+      workflows with n8n.
+    </p>
+    <p i18n="@@about.approach">
+      When I face a problem, I break it into small steps, read the documentation and test each step
+      before I move on. Every bug teaches me something about how the code really works. I like to
+      work in a team, give honest feedback and keep my code clean, so others can build on it.
+    </p>
+    <a class="about__button" routerLink="/" [fragment]="contactSection" i18n="@@about.cta">
+      Send a message
+    </a>
+  </div>
+</section>

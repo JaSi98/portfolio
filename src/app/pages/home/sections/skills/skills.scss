@@ -1,0 +1,81 @@
+@use '../../../../../styles/abstracts/colors' as *;
+@use '../../../../../styles/abstracts/typography' as *;
+@use '../../../../../styles/abstracts/layout' as *;
+@use '../../../../../styles/abstracts/mixins' as *;
+
+$list-max-width: 1036px;
+$item-width: 86px;
+$icon-size: fluid(56px, 75px);
+$column-gap: fluid(24px, 104px);
+$row-gap: fluid(24px, 40px);
+$name-gap: 10px;
+$title-gap: fluid(40px, 56px);
+$icon-lift: -6px;
+$mobile-columns: 3;
+
+.skills {
+  @include focus-ring-on-dark;
+  background: $gradient-band;
+  color: $color-white;
+}
+
+.skills__inner {
+  @include content-width;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $title-gap;
+  padding-block: fluid(48px, 56px) fluid(64px, 140px);
+}
+
+.skills__title {
+  font-family: $font-family-display;
+  font-size: font-size(section-title);
+  font-weight: $font-weight-display;
+  line-height: $line-height-tight;
+}
+
+.skills__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $row-gap $column-gap;
+  max-width: $list-max-width;
+
+  @include mobile {
+    display: grid;
+    grid-template-columns: repeat($mobile-columns, 1fr);
+    justify-items: center;
+    width: 100%;
+  }
+}
+
+.skills__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $name-gap;
+  width: $item-width;
+  text-align: center;
+
+  @include hover {
+    .skills__icon {
+      transform: translateY($icon-lift);
+    }
+
+    .skills__name {
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+.skills__icon {
+  width: $icon-size;
+  height: $icon-size;
+  object-fit: contain;
+  transition: transform $motion-duration $motion-easing;
+}
+
+.skills__name {
+  font-size: font-size(body-s);
+}

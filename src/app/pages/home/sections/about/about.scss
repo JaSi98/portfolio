@@ -1,0 +1,134 @@
+@use 'sass:math';
+@use '../../../../../styles/abstracts/colors' as *;
+@use '../../../../../styles/abstracts/typography' as *;
+@use '../../../../../styles/abstracts/layout' as *;
+@use '../../../../../styles/abstracts/mixins' as *;
+@use '../../../../../styles/abstracts/buttons' as *;
+@use '../../../../../styles/abstracts/decor' as *;
+
+$column-gap: fluid(40px, 63px);
+$intro-width: math.percentage(math.div(606, 1240));
+$block-gap: fluid(32px, 40px);
+$facts-gap: fluid(16px, 24px);
+$fact-icon-size: 40px;
+$fact-gap: 8px;
+$fact-label-width: 7.5em;
+$title-letter-spacing: 0.01em;
+$large-sphere-size: fluid(124px, 163px);
+$small-sphere-size: fluid(48px, 64px);
+
+.about {
+  @include content-width;
+  position: relative;
+  display: grid;
+  grid-template-columns: $intro-width 1fr;
+  gap: $column-gap;
+  padding-block: fluid(120px, 139px) fluid(80px, 127px);
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about__sphere {
+  &--large {
+    @include sphere($large-sphere-size);
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &--small {
+    @include sphere($small-sphere-size);
+    top: fluid(20px, 34px);
+    right: 32%;
+
+    @include mobile {
+      right: $page-padding-inline;
+    }
+  }
+}
+
+.about__intro {
+  display: flex;
+  flex-direction: column;
+  gap: $block-gap;
+}
+
+.about__title {
+  hyphens: auto;
+  color: $color-primary;
+  font-family: $font-family-display;
+  font-size: font-size(display);
+  font-weight: $font-weight-display;
+  line-height: $line-height-tight;
+  letter-spacing: $title-letter-spacing;
+}
+
+.about__subtitle {
+  color: $color-primary;
+  font-family: $font-family-display;
+  font-size: font-size(title);
+  font-weight: $font-weight-display;
+  line-height: $line-height-tight;
+  text-align: center;
+}
+
+.about__facts {
+  display: flex;
+  justify-content: space-between;
+  gap: $facts-gap;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.about__fact {
+  display: flex;
+  align-items: center;
+  gap: $fact-gap;
+  color: $color-primary;
+  font-size: font-size(body);
+
+  @include mobile {
+    font-size: font-size(lead);
+    font-weight: $font-weight-medium;
+  }
+
+  > span {
+    max-width: $fact-label-width;
+
+    @include mobile {
+      max-width: none;
+    }
+  }
+}
+
+.about__fact-icon {
+  flex-shrink: 0;
+  width: $fact-icon-size;
+  height: $fact-icon-size;
+  object-fit: contain;
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $block-gap;
+  font-size: font-size(body-l);
+
+  @include mobile {
+    align-items: center;
+  }
+
+  > p {
+    align-self: stretch;
+  }
+}
+
+.about__button {
+  @include button;
+}
