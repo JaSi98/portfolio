@@ -1,0 +1,55 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:math';
+
+$font-family-display: 'Baloo 2', 'Arial Rounded MT Bold', sans-serif;
+$font-family-base: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+$font-family-button: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$font-weight-display: 800;
+
+$line-height-tight: 1;
+$line-height-base: 1.2;
+$line-height-relaxed: 1.4;
+
+// Viewport widths between which font sizes and spacings grow from their mobile to their
+// desktop value.
+$fluid-min-viewport: 390px;
+$fluid-max-viewport: 1440px;
+
+/// Grows a length linearly from $min at the mobile width to $max at the desktop width.
+@function fluid($min, $max) {
+  $slope: math.div($max - $min, $fluid-max-viewport - $fluid-min-viewport);
+  $intercept: $min - $slope * $fluid-min-viewport;
+  @return clamp(#{$min}, #{$intercept} + #{$slope * 100vw}, #{$max});
+}
+
+// Text styles: mobile and desktop size of each role.
+$font-sizes: (
+  hero-title: (73px, 128px),
+  display: (61px, 121px),
+  section-title: (61px, 96px),
+  hero-greeting: (36px, 64px),
+  title: (36px, 45px),
+  subtitle: (24px, 32px),
+  lead: (20px, 23px),
+  name: (20px, 24px),
+  body-l: (18px, 23px),
+  body: (16px, 18px),
+  body-s: (16px, 16px),
+  small: (14px, 14px),
+);
+
+/// Returns the fluid font size of a text style, e.g. font-size(title).
+@function font-size($name) {
+  $sizes: map.get($font-sizes, $name);
+  $min: list.nth($sizes, 1);
+  $max: list.nth($sizes, 2);
+  @if $min == $max {
+    @return $max;
+  }
+  @return fluid($min, $max);
+}

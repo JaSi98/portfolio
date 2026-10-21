@@ -1,0 +1,21 @@
+@use 'typography' as *;
+
+// Width of the design; wider screens only stretch the backgrounds.
+$content-max-width: 1440px;
+
+// Side padding of the content: 20px on phones up to 77px at the desktop width.
+$page-padding-inline: fluid(20px, 77px);
+
+// Vertical space of the sections.
+$section-padding-block: fluid(64px, 120px);
+
+$radius-s: 5px;
+$radius-m: 10px;
+
+// Lays out the content of a section with the page padding and the maximum width.
+@mixin content-width {
+  width: 100%;
+  max-width: $content-max-width;
+  margin-inline: auto;
+  padding-inline: $page-padding-inline;
+}

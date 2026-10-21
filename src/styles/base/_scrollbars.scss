@@ -1,0 +1,31 @@
+@use '../abstracts/colors' as *;
+
+$scrollbar-size: 8px;
+$scrollbar-radius: 8px;
+$scrollbar-thumb: rgba($color-primary, 0.6);
+$scrollbar-thumb-hover: $color-primary;
+
+// Slim scrollbars in the blue of the design.
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $scrollbar-thumb transparent;
+}
+
+// Chromium and Safari use the pseudo elements below where scrollbar-color is not supported.
+::-webkit-scrollbar {
+  width: $scrollbar-size;
+  height: $scrollbar-size;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: $scrollbar-radius;
+  background-color: $scrollbar-thumb;
+
+  &:hover {
+    background-color: $scrollbar-thumb-hover;
+  }
+}

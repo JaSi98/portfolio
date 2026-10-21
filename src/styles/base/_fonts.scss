@@ -1,0 +1,22 @@
+@use 'sass:list';
+
+// Latin subsets of the three families; only the weights the design uses.
+$font-faces: (
+  'Baloo 2': ('baloo-2', (700, 800)),
+  'Montserrat': ('montserrat', (400, 500, 700)),
+  'Poppins': ('poppins', (400)),
+);
+
+@each $family, $font in $font-faces {
+  $file: list.nth($font, 1);
+
+  @each $weight in list.nth($font, 2) {
+    @font-face {
+      font-family: $family;
+      src: url('../fonts/#{$file}-#{$weight}.woff2') format('woff2');
+      font-weight: $weight;
+      font-style: normal;
+      font-display: swap;
+    }
+  }
+}
