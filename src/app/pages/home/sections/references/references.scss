@@ -1,0 +1,75 @@
+@use '../../../../../styles/abstracts/colors' as *;
+@use '../../../../../styles/abstracts/typography' as *;
+@use '../../../../../styles/abstracts/layout' as *;
+@use '../../../../../styles/abstracts/mixins' as *;
+
+$card-width: 301px;
+$list-gap: fluid(40px, 67px);
+$block-gap: fluid(32px, 56px);
+$card-gap: 32px;
+$author-gap: 4px;
+
+.references {
+  @include focus-ring-on-dark;
+  background: $gradient-band;
+  color: $color-white;
+}
+
+.references__inner {
+  @include content-width;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $block-gap;
+  padding-block: fluid(56px, 80px) fluid(64px, 120px);
+}
+
+.references__header {
+  text-align: center;
+}
+
+.references__title {
+  font-family: $font-family-display;
+  font-size: font-size(title);
+  font-weight: $font-weight-display;
+  line-height: $line-height-relaxed;
+}
+
+.references__intro {
+  font-size: font-size(subtitle);
+  line-height: $line-height-relaxed;
+}
+
+.references__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $list-gap;
+}
+
+.reference {
+  display: flex;
+  flex-direction: column;
+  gap: $card-gap;
+  width: $card-width;
+  max-width: 100%;
+}
+
+.reference__author {
+  display: flex;
+  flex-direction: column;
+  gap: $author-gap;
+}
+
+.reference__name {
+  font-size: font-size(name);
+}
+
+.reference__project {
+  font-size: font-size(body-s);
+  line-height: $line-height-relaxed;
+}
+
+.reference__quote {
+  font-size: font-size(body);
+}

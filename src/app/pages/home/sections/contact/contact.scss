@@ -1,0 +1,170 @@
+@use 'sass:math';
+@use '../../../../../styles/abstracts/colors' as *;
+@use '../../../../../styles/abstracts/typography' as *;
+@use '../../../../../styles/abstracts/layout' as *;
+@use '../../../../../styles/abstracts/mixins' as *;
+@use '../../../../../styles/abstracts/buttons' as *;
+@use '../../../../../styles/abstracts/decor' as *;
+
+$inner-max-width: 1241px;
+$intro-width: math.percentage(math.div(473, 1241));
+$column-gap: fluid(40px, 151px);
+$intro-gap: fluid(16px, 24px);
+$title-gap: fluid(32px, 64px);
+$form-gap: 8px;
+$top-button-size: 40px;
+$top-icon-size: 24px;
+$feedback-min-height: 44px;
+
+.contact {
+  position: relative;
+  overflow: hidden;
+  background: $gradient-hero;
+}
+
+.contact__sphere {
+  &--top {
+    @include sphere(fluid(64px, 130px));
+    top: fluid(16px, 40px);
+    left: 55%;
+  }
+
+  &--left {
+    @include sphere(fluid(0px, 202px));
+    top: 58%;
+    left: 15%;
+  }
+
+  &--right {
+    @include sphere(fluid(40px, 72px));
+    right: 5%;
+    bottom: fluid(40px, 100px);
+  }
+}
+
+.contact__inner {
+  @include content-width;
+  position: relative;
+  display: grid;
+  grid-template-columns: $intro-width 1fr;
+  grid-template-areas:
+    'title title'
+    'intro form'
+    'top top';
+  gap: $title-gap $column-gap;
+  max-width: $inner-max-width + 2 * 77px;
+  padding-block: fluid(64px, 120px) fluid(40px, 56px);
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'title'
+      'intro'
+      'form'
+      'top';
+  }
+}
+
+.contact__title {
+  grid-area: title;
+  color: $color-primary;
+  font-family: $font-family-display;
+  font-size: font-size(section-title);
+  font-weight: $font-weight-display;
+  line-height: $line-height-base;
+}
+
+.contact__intro {
+  grid-area: intro;
+  display: flex;
+  flex-direction: column;
+  gap: $intro-gap;
+  font-size: font-size(body-s);
+}
+
+.contact__subtitle {
+  color: $color-primary;
+  font-size: font-size(subtitle);
+  font-weight: $font-weight-bold;
+}
+
+.contact__call {
+  color: $color-primary;
+
+  > strong {
+    color: $color-primary-dark;
+  }
+}
+
+.contact__form {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  gap: $form-gap;
+}
+
+.contact__link {
+  color: $color-primary;
+  text-underline-offset: 2px;
+
+  @include hover {
+    color: $color-primary-dark;
+  }
+}
+
+.contact__hint {
+  color: $color-black;
+  font-size: font-size(small);
+}
+
+.contact__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $form-gap * 2;
+}
+
+.contact__submit {
+  @include button;
+}
+
+// Reserved space, so the feedback does not move the layout when it appears.
+.contact__feedback {
+  min-height: $feedback-min-height;
+  color: $color-primary-dark;
+  font-size: font-size(body-s);
+  text-align: center;
+
+  &--error {
+    color: $color-error;
+  }
+}
+
+.contact__top {
+  @include flex-center;
+  grid-area: top;
+  width: $top-button-size;
+  height: $top-button-size;
+  border: 2px solid $color-primary;
+  border-radius: 50%;
+  background-color: $color-primary;
+  color: $color-white;
+  transition:
+    background-color $motion-duration $motion-easing,
+    color $motion-duration $motion-easing;
+
+  @include hover {
+    background-color: transparent;
+    color: $color-primary;
+  }
+}
+
+.contact__top-icon {
+  width: $top-icon-size;
+  height: $top-icon-size;
+  fill: currentColor;
+}
+
+.contact__top-label {
+  @include visually-hidden;
+}

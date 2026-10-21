@@ -1,0 +1,89 @@
+@use '../../../../styles/abstracts/colors' as *;
+@use '../../../../styles/abstracts/typography' as *;
+@use '../../../../styles/abstracts/layout' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+@use '../../../../styles/abstracts/forms' as *;
+
+$label-inset: 25px;
+$label-top: 15px;
+$label-padding: 0 4px;
+$status-size: 25px;
+$status-inset: 16px;
+$textarea-height: 202px;
+$error-line-height: 22px;
+
+:host {
+  display: block;
+}
+
+.text-field {
+  position: relative;
+}
+
+.text-field__control {
+  @include field-box;
+  display: block;
+  padding-right: $status-inset * 2 + $status-size;
+
+  &--textarea {
+    height: $textarea-height;
+    resize: vertical;
+  }
+
+  .text-field--invalid & {
+    @include field-box-invalid;
+  }
+}
+
+// Sits like a placeholder in the field and moves into the border while the field is in use.
+.text-field__label {
+  position: absolute;
+  top: $label-top;
+  left: $label-inset;
+  padding: $label-padding;
+  background-color: $color-white;
+  font-size: font-size(body-s);
+  line-height: $line-height-base;
+  pointer-events: none;
+  transform-origin: left;
+  transition: transform $motion-duration $motion-easing;
+
+  &--required {
+    @include required-mark;
+  }
+
+  .text-field--active & {
+    transform: translateY(-140%);
+  }
+}
+
+.text-field__status {
+  position: absolute;
+  top: ($field-min-height - $status-size) * 0.5;
+  right: $status-inset;
+  width: $status-size;
+  height: $status-size;
+  mask: none center / contain no-repeat;
+  opacity: 0;
+  transition: opacity $motion-duration $motion-easing;
+
+  .text-field--invalid & {
+    mask-image: url('../../../../styles/icons/error.svg');
+    background-color: $color-error;
+    opacity: 1;
+  }
+
+  .text-field--valid & {
+    mask-image: url('../../../../styles/icons/check.svg');
+    background-color: $color-success;
+    opacity: 1;
+  }
+}
+
+// Reserved line for the message, so it does not shift the fields below.
+.text-field__error {
+  min-height: $error-line-height;
+  padding-top: 4px;
+  color: $color-error;
+  font-size: font-size(small);
+}

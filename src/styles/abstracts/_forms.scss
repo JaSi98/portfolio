@@ -1,0 +1,53 @@
+@use 'colors' as *;
+@use 'typography' as *;
+@use 'layout' as *;
+@use 'mixins' as *;
+
+$field-min-height: 50px;
+$field-padding: 15px 25px;
+$field-border-width: 1px;
+$field-border-width-hover: 2px;
+
+// Box around inputs and text areas of the contact form.
+@mixin field-box {
+  width: 100%;
+  min-height: $field-min-height;
+  padding: $field-padding;
+  border: $field-border-width solid $color-primary;
+  border-radius: $radius-m;
+  background-color: $color-white;
+  color: $color-black;
+  font-size: font-size(body-s);
+  outline: none;
+  transition: box-shadow $motion-duration $motion-easing;
+
+  &::placeholder {
+    color: $color-black;
+    opacity: 1;
+  }
+
+  @include hover {
+    box-shadow: inset 0 0 0 ($field-border-width-hover - $field-border-width) $color-primary;
+  }
+
+  // Keeps the browser's autofill colours from changing the design.
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: $color-black;
+    box-shadow: inset 0 0 0 1000px $color-white;
+    caret-color: $color-black;
+  }
+}
+
+@mixin field-box-invalid {
+  border-color: $color-error;
+}
+
+// Red star after the label of a required field.
+@mixin required-mark {
+  &::after {
+    content: ' *';
+    color: $color-error;
+  }
+}

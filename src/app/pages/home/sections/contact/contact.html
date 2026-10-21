@@ -1,0 +1,107 @@
+<section class="contact" [id]="sectionId" aria-labelledby="contact-title">
+  <span class="contact__sphere contact__sphere--top" aria-hidden="true"></span>
+  <span class="contact__sphere contact__sphere--left" aria-hidden="true"></span>
+  <span class="contact__sphere contact__sphere--right" aria-hidden="true"></span>
+
+  <div class="contact__inner">
+    <h2 class="contact__title" id="contact-title" i18n="@@contact.title">Contact</h2>
+
+    <div class="contact__intro">
+      <h3 class="contact__subtitle" i18n="@@contact.subtitle">Got a problem to solve?</h3>
+      <p i18n="@@contact.text">
+        Tell me about your project or the role you want to fill. I am looking forward to bringing
+        my skills into a team and helping you build an app that people like to use.
+      </p>
+      <p class="contact__call" i18n="@@contact.call">
+        Need a frontend developer? <strong>Contact me!</strong>
+      </p>
+    </div>
+
+    <form class="contact__form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <app-text-field
+        formControlName="name"
+        i18n-label="@@contact.name"
+        label="Your name"
+        autocomplete="name"
+        i18n-errorMessage="@@contact.nameError"
+        errorMessage="Please enter your name."
+        [isInvalid]="isInvalid('name')"
+        [isValid]="isValid('name')"
+      />
+      <app-text-field
+        formControlName="email"
+        type="email"
+        i18n-label="@@contact.email"
+        label="Your email"
+        autocomplete="email"
+        i18n-errorMessage="@@contact.emailError"
+        errorMessage="Please enter a valid email address, e.g. name@example.com."
+        [isInvalid]="isInvalid('email')"
+        [isValid]="isValid('email')"
+      />
+      <app-text-field
+        formControlName="message"
+        type="textarea"
+        i18n-label="@@contact.message"
+        label="Your message"
+        i18n-errorMessage="@@contact.messageError"
+        errorMessage="Please write a message with at least 10 characters."
+        [isInvalid]="isInvalid('message')"
+        [isValid]="isValid('message')"
+      />
+      <app-checkbox
+        formControlName="privacy"
+        i18n-errorMessage="@@contact.privacyError"
+        errorMessage="Please accept the privacy policy."
+        [isInvalid]="isInvalid('privacy')"
+      >
+        <ng-container i18n="@@contact.privacy"
+          >I've read the
+          <a class="contact__link" routerLink="/privacy-policy">privacy policy</a>
+          and agree to the processing of my data as outlined.</ng-container
+        >
+      </app-checkbox>
+
+      <p class="contact__hint" i18n="@@contact.required">* Required field</p>
+
+      <div class="contact__actions">
+        <button
+          class="contact__submit"
+          type="submit"
+          [disabled]="form.invalid || sendState() === 'sending'"
+        >
+          @if (sendState() === 'sending') {
+            <ng-container i18n="@@contact.sending">Sending …</ng-container>
+          } @else {
+            <ng-container i18n="@@contact.submit">Say hello ;)</ng-container>
+          }
+        </button>
+        <p
+          class="contact__feedback"
+          [class.contact__feedback--error]="sendState() === 'failed'"
+          role="status"
+        >
+          @switch (sendState()) {
+            @case ('sent') {
+              <ng-container i18n="@@contact.sent"
+                >Thank you! Your message has been sent. I will get back to you soon.</ng-container
+              >
+            }
+            @case ('failed') {
+              <ng-container i18n="@@contact.failed"
+                >Your message could not be sent. Please try again later.</ng-container
+              >
+            }
+          }
+        </p>
+      </div>
+    </form>
+
+    <a class="contact__top" routerLink="/" fragment="top">
+      <svg class="contact__top-icon" viewBox="0 -960 960 960" aria-hidden="true">
+        <use href="assets/icons/arrow-up.svg#icon"></use>
+      </svg>
+      <span class="contact__top-label" i18n="@@contact.toTop">Back to top</span>
+    </a>
+  </div>
+</section>

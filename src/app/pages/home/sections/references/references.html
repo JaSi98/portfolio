@@ -1,0 +1,27 @@
+@if (references.length) {
+  <section class="references" aria-labelledby="references-title">
+    <div class="references__inner">
+      <header class="references__header">
+        <h2 class="references__title" id="references-title" i18n="@@references.title">
+          Need a teamplayer?
+        </h2>
+        <p class="references__intro" i18n="@@references.intro">
+          Here is what my colleagues say about me.
+        </p>
+      </header>
+      <ul class="references__list">
+        @for (reference of references; track reference.name) {
+          <li>
+            <figure class="reference">
+              <figcaption class="reference__author">
+                <strong class="reference__name">{{ reference.name }}</strong>
+                <span class="reference__project">{{ reference.project }}</span>
+              </figcaption>
+              <blockquote class="reference__quote"><q>{{ reference.quote }}</q></blockquote>
+            </figure>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+}

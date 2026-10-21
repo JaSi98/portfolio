@@ -1,0 +1,93 @@
+@use '../../../styles/abstracts/colors' as *;
+@use '../../../styles/abstracts/typography' as *;
+@use '../../../styles/abstracts/layout' as *;
+@use '../../../styles/abstracts/mixins' as *;
+
+$footer-min-height: fluid(200px, 289px);
+$logo-size: fluid(48px, 64px);
+$center-gap: 16px;
+$legal-gap: fluid(16px, 32px);
+$underline-offset: 4px;
+
+.footer {
+  @include focus-ring-on-dark;
+  border-top: 4px solid $color-primary;
+  background: $gradient-band;
+  color: $color-white;
+}
+
+.footer__inner {
+  @include content-width;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: $center-gap;
+  min-height: $footer-min-height;
+  padding-block: fluid(40px, 56px);
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+.footer__logo {
+  justify-self: start;
+  color: $color-white;
+
+  @include mobile {
+    justify-self: center;
+  }
+}
+
+.footer__logo-mark {
+  width: $logo-size;
+  height: $logo-size;
+}
+
+.footer__hidden {
+  @include visually-hidden;
+}
+
+.footer__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $center-gap;
+}
+
+.footer__copyright {
+  font-size: font-size(lead);
+}
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $legal-gap;
+}
+
+.footer__link {
+  font-size: font-size(body-s);
+  text-decoration: none;
+  text-underline-offset: $underline-offset;
+
+  @include hover {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
+// The round icons turn white; their symbols are cut out and show the blue background.
+.footer__social {
+  justify-self: end;
+  filter: brightness(0) invert(1);
+
+  @include mobile {
+    justify-self: center;
+  }
+}

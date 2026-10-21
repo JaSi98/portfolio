@@ -1,0 +1,20 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <a class="footer__logo" routerLink="/">
+      <svg class="footer__logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <use href="assets/logo/logo.svg#icon"></use>
+      </svg>
+      <span class="footer__hidden" i18n="@@header.home">Jan Sippl – home</span>
+    </a>
+
+    <div class="footer__center">
+      <p class="footer__copyright">© Jan Sippl {{ year }}</p>
+      <nav class="footer__legal" i18n-aria-label="@@footer.legal" aria-label="Legal">
+        <a class="footer__link" routerLink="/legal-notice" i18n="@@footer.legalNotice">Legal notice</a>
+        <a class="footer__link" routerLink="/privacy-policy" i18n="@@footer.privacy">Privacy policy</a>
+      </nav>
+    </div>
+
+    <app-social-links class="footer__social" direction="row" />
+  </div>
+</footer>

@@ -1,0 +1,59 @@
+@use '../../../../styles/abstracts/colors' as *;
+@use '../../../../styles/abstracts/typography' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+$box-size: 18px;
+$box-border: 2px;
+$box-radius: 2px;
+$label-gap: 10px;
+$error-line-height: 22px;
+
+.checkbox {
+  display: grid;
+  grid-template-columns: $box-size 1fr;
+  align-items: start;
+  column-gap: $label-gap;
+}
+
+// The native checkbox keeps keyboard and screen reader support; only its look is replaced.
+.checkbox__input {
+  position: relative;
+  width: $box-size;
+  height: $box-size;
+  margin: 0;
+  border: $box-border solid $color-primary;
+  border-radius: $box-radius;
+  appearance: none;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -$box-border;
+    background-color: $color-primary;
+    mask: url('../../../../styles/icons/check-box.svg') center / 125% no-repeat;
+    transform: scale(0);
+    transition: transform $motion-duration $motion-easing;
+  }
+
+  &:checked::after {
+    transform: scale(1);
+  }
+
+  .checkbox--invalid & {
+    border-color: $color-error;
+  }
+}
+
+.checkbox__label {
+  font-size: font-size(small);
+  cursor: pointer;
+}
+
+.checkbox__error {
+  grid-column: 2;
+  min-height: $error-line-height;
+  padding-top: 4px;
+  color: $color-error;
+  font-size: font-size(small);
+}

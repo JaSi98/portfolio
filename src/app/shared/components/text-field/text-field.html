@@ -1,0 +1,46 @@
+<div
+  class="text-field"
+  [class.text-field--active]="isFocused() || value()"
+  [class.text-field--invalid]="isInvalid() && !isFocused()"
+  [class.text-field--valid]="isValid() && !isFocused()"
+  [class.text-field--multiline]="type() === 'textarea'"
+>
+  <label class="text-field__label" [class.text-field__label--required]="isRequired()" [for]="fieldId">
+    {{ label() }}
+  </label>
+  @if (type() === 'textarea') {
+    <textarea
+      class="text-field__control text-field__control--textarea"
+      [id]="fieldId"
+      [value]="value()"
+      [disabled]="isDisabled()"
+      [attr.aria-required]="isRequired()"
+      [attr.aria-invalid]="isInvalid() && !isFocused()"
+      [attr.aria-describedby]="fieldId + '-error'"
+      (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+    ></textarea>
+  } @else {
+    <input
+      class="text-field__control"
+      [id]="fieldId"
+      [type]="type()"
+      [value]="value()"
+      [disabled]="isDisabled()"
+      [attr.autocomplete]="autocomplete()"
+      [attr.aria-required]="isRequired()"
+      [attr.aria-invalid]="isInvalid() && !isFocused()"
+      [attr.aria-describedby]="fieldId + '-error'"
+      (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+    />
+  }
+  <span class="text-field__status" aria-hidden="true"></span>
+  <p class="text-field__error" [id]="fieldId + '-error'" role="alert">
+    @if (isInvalid() && !isFocused()) {
+      {{ errorMessage() }}
+    }
+  </p>
+</div>

@@ -1,0 +1,20 @@
+<div class="checkbox" [class.checkbox--invalid]="isInvalid()">
+  <input
+    class="checkbox__input"
+    type="checkbox"
+    [id]="checkboxId"
+    [checked]="value()"
+    [disabled]="isDisabled()"
+    aria-required="true"
+    [attr.aria-invalid]="isInvalid()"
+    [attr.aria-describedby]="checkboxId + '-error'"
+    (change)="onToggle($event)"
+    (blur)="markAsTouched()"
+  />
+  <label class="checkbox__label" [for]="checkboxId"><ng-content /></label>
+  <p class="checkbox__error" [id]="checkboxId + '-error'" role="alert">
+    @if (isInvalid()) {
+      {{ errorMessage() }}
+    }
+  </p>
+</div>
