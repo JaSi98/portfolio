@@ -27,6 +27,17 @@
     "about.passion": "Ich bin Frontend-Entwickler in Weiterbildung an der Developer Akademie. Am Programmieren fasziniert mich, aus einer Idee etwas zu machen, das Menschen anklicken, testen und nutzen können – auf jeder Bildschirmgröße. Ich entwickle mit Angular und TypeScript, binde Apps an Supabase an und automatisiere Abläufe mit n8n.",
     "about.approach": "Wenn ich vor einem Problem stehe, zerlege ich es in kleine Schritte, lese die Dokumentation und teste jeden Schritt, bevor ich weitermache. Jeder Fehler zeigt mir etwas darüber, wie der Code wirklich funktioniert. Ich arbeite gern im Team, gebe ehrliches Feedback und halte meinen Code sauber, damit andere darauf aufbauen können.",
     "about.cta": "Nachricht senden",
-    "skills.title": "Skills"
+    "skills.title": "Skills",
+    "projects.title": "Meine Projekte",
+    "projects.intro": "Hier findest du eine Auswahl meiner Arbeiten – probiere die Projekte aus und sieh meine Fähigkeiten in Aktion.",
+    "projects.live": "Live testen",
+    "projects.join.description": "Kanban-Board für kleine Teams, inspiriert vom Kanban-System. Aufgaben per Drag & Drop anlegen und organisieren, Kontakte zuweisen und den Fortschritt live verfolgen. Anfragen von Stakeholdern werden automatisch zu Tickets.",
+    "projects.join.alt": "Anfrageseite des Kanban-Boards Join",
+    "projects.polloLoco.description": "Jump-and-Run-Spiel mit objektorientiertem Aufbau. Hilf Pepe, Münzen und Salsaflaschen zu sammeln, um gegen die verrückte Henne zu kämpfen.",
+    "projects.polloLoco.alt": "Startbildschirm des Spiels El Pollo Loco",
+    "projects.cuisine.description": "Rezeptgenerator, der aus den Zutaten zu Hause drei Rezepte mit einem Schritt-für-Schritt-Plan für jeden Koch macht. Alle Rezepte landen in einem gemeinsamen Kochbuch.",
+    "projects.cuisine.alt": "Startseite des Rezeptgenerators Code à Cuisine",
+    "projects.poll.description": "Umfragen in wenigen Minuten erstellen und teilen – vom Team-Event bis zur Unternehmenskultur. Meinungen sammeln und die Ergebnisse auf einen Blick sehen.",
+    "projects.poll.alt": "Startseite der Poll App"
   }
 }

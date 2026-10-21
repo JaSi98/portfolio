@@ -1,0 +1,60 @@
+<section class="projects" [id]="sectionId" aria-labelledby="projects-title">
+  <span class="projects__sphere projects__sphere--small" aria-hidden="true"></span>
+  <span class="projects__sphere projects__sphere--medium" aria-hidden="true"></span>
+
+  <header class="projects__header">
+    <h2 class="projects__title" id="projects-title" i18n="@@projects.title">My work</h2>
+    <p class="projects__intro" i18n="@@projects.intro">
+      Explore a selection of my work here – interact with projects to see my skills in action.
+    </p>
+  </header>
+
+  <ul class="projects__list">
+    @for (project of projects; track project.name; let isOdd = $odd) {
+      <li class="project" [class.project--reversed]="isOdd">
+        <span class="project__sphere" aria-hidden="true"></span>
+        <a
+          class="project__image-link"
+          [href]="project.liveUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <img
+            class="project__image"
+            [src]="project.image"
+            [alt]="project.imageAlt"
+            width="620"
+            height="393"
+            loading="lazy"
+          />
+        </a>
+        <article class="project__text">
+          <h3 class="project__name">{{ project.name }}</h3>
+          <p class="project__technologies">{{ project.technologies.join(' | ') }}</p>
+          <p class="project__description">{{ project.description }}</p>
+          <div class="project__links">
+            <a
+              class="project__button project__button--filled"
+              [href]="project.liveUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span i18n="@@projects.live">Live test</span>
+              <span class="project__hidden-name">: {{ project.name }}</span>
+            </a>
+            <a
+              class="project__button"
+              [href]="project.githubUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub<span class="project__hidden-name">: {{ project.name }}</span>
+            </a>
+          </div>
+        </article>
+      </li>
+    }
+  </ul>
+</section>

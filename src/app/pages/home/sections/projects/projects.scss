@@ -1,0 +1,203 @@
+@use 'sass:math';
+@use '../../../../../styles/abstracts/colors' as *;
+@use '../../../../../styles/abstracts/typography' as *;
+@use '../../../../../styles/abstracts/layout' as *;
+@use '../../../../../styles/abstracts/mixins' as *;
+@use '../../../../../styles/abstracts/buttons' as *;
+@use '../../../../../styles/abstracts/decor' as *;
+
+$image-width: math.percentage(math.div(620, 1286));
+$text-max-width: 536px;
+$row-gap: fluid(80px, 120px);
+$column-gap: fluid(32px, 88px);
+$text-gap: 15px;
+$links-gap: fluid(9px, 20px);
+$button-gap: fluid(24px, 40px);
+$header-gap: fluid(16px, 40px);
+$list-offset: fluid(56px, 96px);
+$image-shadow: 5px 5px 15px $color-shadow;
+$image-hover-scale: 1.075;
+$image-hover-duration: 100ms;
+$row-sphere-size: fluid(160px, 260px);
+$row-sphere-shift: -45%;
+
+:host {
+  display: block;
+  overflow-x: clip;
+}
+
+.projects {
+  @include content-width;
+  position: relative;
+  padding-block: fluid(80px, 120px);
+}
+
+.projects__sphere {
+  &--small {
+    @include sphere(fluid(36px, 65px));
+    top: fluid(40px, 60px);
+    left: 38%;
+
+    @include mobile {
+      left: auto;
+      right: $page-padding-inline;
+    }
+  }
+
+  &--medium {
+    @include sphere(fluid(0px, 108px));
+    top: fluid(80px, 150px);
+    right: 4%;
+  }
+}
+
+.projects__header {
+  display: flex;
+  flex-direction: column;
+  gap: $header-gap;
+  max-width: 673px;
+}
+
+.projects__title {
+  color: $color-primary;
+  font-family: $font-family-display;
+  font-size: font-size(section-title);
+  font-weight: $font-weight-display;
+  line-height: $line-height-tight;
+}
+
+.projects__intro {
+  font-size: font-size(body-l);
+}
+
+.projects__list {
+  display: flex;
+  flex-direction: column;
+  gap: $row-gap;
+  margin-top: $list-offset;
+}
+
+.project {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: $column-gap;
+
+  @include mobile {
+    flex-direction: column;
+    gap: $text-gap * 2;
+  }
+
+  &--reversed {
+    flex-direction: row-reverse;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+}
+
+.project__sphere {
+  @include sphere($row-sphere-size);
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transform: translate($row-sphere-shift, 30%);
+
+  // On phones the text sits below the image, so the sphere moves up behind the image.
+  @include mobile {
+    top: 0;
+    bottom: auto;
+    transform: translate($row-sphere-shift, 20%);
+  }
+
+  .project--reversed & {
+    left: auto;
+    right: 0;
+    bottom: auto;
+    top: 0;
+    transform: translate(-$row-sphere-shift, -20%);
+  }
+}
+
+.project__image-link {
+  flex: 0 0 $image-width;
+
+  @include mobile {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  @include hover {
+    .project__image {
+      transform: scale($image-hover-scale);
+    }
+  }
+}
+
+.project__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 620 / 393;
+  object-fit: cover;
+  box-shadow: $image-shadow;
+  transition: transform $image-hover-duration ease-in;
+}
+
+.project__text {
+  display: flex;
+  flex-direction: column;
+  gap: $text-gap;
+  max-width: $text-max-width;
+
+  .project--reversed & {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  @include mobile {
+    align-items: center;
+    text-align: center;
+
+    .project--reversed & {
+      align-items: center;
+      text-align: center;
+    }
+  }
+}
+
+.project__name {
+  color: $color-primary;
+  font-family: $font-family-display;
+  font-size: font-size(title);
+  font-weight: $font-weight-display;
+  line-height: $line-height-base;
+}
+
+.project__technologies {
+  color: $color-primary;
+  font-size: font-size(lead);
+}
+
+.project__description {
+  font-size: font-size(body-s);
+}
+
+.project__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $button-gap;
+  margin-top: $links-gap;
+}
+
+.project__button {
+  @include button;
+
+  &--filled {
+    @include button-filled;
+  }
+}
+
+.project__hidden-name {
+  @include visually-hidden;
+}
