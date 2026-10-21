@@ -64,7 +64,8 @@ $menu-layer: 5;
   align-items: center;
   gap: $nav-gap;
 
-  @include mobile {
+  // Up to tablet width the links would reach over the circle of the hero.
+  @include tablet {
     display: none;
   }
 }
@@ -121,7 +122,7 @@ $menu-layer: 5;
   background: none;
   cursor: pointer;
 
-  @include mobile {
+  @include tablet {
     display: flex;
   }
 }

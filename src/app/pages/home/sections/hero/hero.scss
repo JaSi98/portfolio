@@ -23,6 +23,9 @@ $circle-left: math.percentage(math.div(-199, $design-width));
 $circle-top: math.div(-71, $design-width) * 100vw;
 
 $title-letter-spacing: -0.025em;
+$title-max-viewport-share: 16.4vw;
+$greeting-desktop-share: math.div(64, $design-width) * 100vw;
+$title-desktop-share: math.div(128, $design-width) * 100vw;
 $scroll-gap: 10px;
 $line-width: 2px;
 $arrow-size: 24px;
@@ -115,13 +118,24 @@ $mobile-scroll-bottom: 24px;
 }
 
 .hero__greeting {
-  font-size: font-size(hero-greeting);
+  font-size: min(#{font-size(hero-greeting)}, #{$greeting-desktop-share});
+
+  @include mobile {
+    font-size: font-size(hero-greeting);
+  }
+
   line-height: $line-height-tight;
 }
 
 .hero__title {
   font-family: $font-family-display;
-  font-size: font-size(hero-title);
+  // Between phone and desktop the title keeps its share of the width, so it stays next to the
+  // circle; below the design's phone width it shrinks with the screen, so both words fit.
+  font-size: min(#{font-size(hero-title)}, #{$title-desktop-share});
+
+  @include mobile {
+    font-size: min(#{font-size(hero-title)}, #{$title-max-viewport-share});
+  }
   font-weight: $font-weight-display;
   line-height: $line-height-tight;
   letter-spacing: $title-letter-spacing;

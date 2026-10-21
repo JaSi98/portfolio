@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && cp -r deploy/. dist/portfolio/browser/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:portfolio": "node dist/portfolio/server/server.mjs"
+    "start:de": "ng serve --configuration de",
+    "i18n": "ng extract-i18n"
   },
   "private": true,
   "packageManager": "npm@11.16.0",

@@ -1,0 +1,55 @@
+# Apache configuration for the root of portfolio.webstudiojs.com.
+# The build contains one folder per language (/de/ and /en/) with prerendered pages.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Secure connection only.
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # The start page leads to the language of the browser; English for everyone else.
+  RewriteCond %{HTTP:Accept-Language} ^de [NC]
+  RewriteRule ^$ /de/ [L,R=302]
+  RewriteRule ^$ /en/ [L,R=302]
+
+  # Unknown paths inside a language folder show the start page of that language.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(de|en)/ /$1/index.html [L]
+</IfModule>
+
+DirectoryIndex index.html
+Options -Indexes
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType image/svg+xml .svg
+  AddType font/woff2 .woff2
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript application/json image/svg+xml application/xml
+</IfModule>
+
+# JavaScript and CSS carry a content hash in their name and can be kept for a year; the HTML
+# pages are checked again on every visit, so a new version is loaded right after a deployment.
+<IfModule mod_headers.c>
+  <FilesMatch "-[0-9A-Za-z_-]{8,}\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(webp|png|svg|jpg|woff2)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+ErrorDocument 404 /en/index.html

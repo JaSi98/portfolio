@@ -92,6 +92,7 @@
     "privacy.rightPortability": "deine Daten in einem gängigen Format zu erhalten (Art. 20 DSGVO),",
     "privacy.rightObjection": "einer Verarbeitung auf Grundlage berechtigter Interessen zu widersprechen (Art. 21 DSGVO).",
     "privacy.complaint": "Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel bei der Sächsischen Datenschutz- und Transparenzbeauftragten.",
-    "privacy.date": "Stand: Oktober 2026"
+    "privacy.date": "Stand: Oktober 2026",
+    "seo.description": "Portfolio von Jan Sippl, Frontend-Entwickler mit Angular und TypeScript: Projekte, Skills und Kontakt."
   }
 }
