@@ -36,11 +36,16 @@ $menu-layer: 5;
   position: relative;
   z-index: $header-layer;
   display: block;
-  color: $color-white;
+  color: $color-primary;
   transition: color $motion-duration $motion-easing;
+
+  .header--on-hero & {
+    color: $color-white;
+  }
 }
 
-.header--menu-open .header__logo {
+.header--menu-open .header__logo,
+.header--menu-open.header--on-hero .header__logo {
   color: $color-primary;
 }
 

@@ -1,0 +1,77 @@
+@use '../abstracts/colors' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/layout' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/decor' as *;
+
+$legal-max-width: 900px;
+$section-gap: fluid(24px, 32px);
+$paragraph-gap: 12px;
+$header-space: fluid(120px, 160px);
+
+// Text pages such as legal notice and privacy policy.
+.legal {
+  position: relative;
+  overflow: hidden;
+  background: $gradient-hero;
+
+  &__inner {
+    @include content-width;
+    display: flex;
+    flex-direction: column;
+    gap: $section-gap;
+    max-width: $legal-max-width + 2 * 77px;
+    padding-block: $header-space fluid(64px, 120px);
+  }
+
+  &__sphere {
+    @include sphere(fluid(64px, 120px));
+    top: fluid(96px, 120px);
+    right: 8%;
+
+    @include mobile {
+      top: 76px;
+      right: 50%;
+      width: 40px;
+    }
+  }
+
+  &__title {
+    color: $color-primary;
+    font-family: $font-family-display;
+    font-size: font-size(section-title);
+    font-weight: $font-weight-display;
+    line-height: $line-height-tight;
+    hyphens: auto;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $paragraph-gap;
+  }
+
+  &__heading {
+    color: $color-primary;
+    font-size: font-size(subtitle);
+    font-weight: $font-weight-bold;
+  }
+
+  &__list {
+    padding-left: 1.25em;
+    list-style: disc;
+  }
+
+  a {
+    color: $color-primary-dark;
+    text-underline-offset: 2px;
+  }
+
+  p,
+  li,
+  address {
+    font-size: font-size(body);
+    font-style: normal;
+    line-height: $line-height-relaxed;
+  }
+}

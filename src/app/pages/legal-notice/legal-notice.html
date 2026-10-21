@@ -1,0 +1,53 @@
+<article class="legal" aria-labelledby="legal-title">
+  <span class="legal__sphere" aria-hidden="true"></span>
+  <div class="legal__inner">
+    <h1 class="legal__title" id="legal-title" i18n="@@legal.title">Legal notice</h1>
+
+    <section class="legal__section">
+      <h2 class="legal__heading" i18n="@@legal.provider">Information according to § 5 DDG</h2>
+      <address>
+        {{ info.name }}<br />
+        {{ info.street }}<br />
+        {{ info.city }}
+      </address>
+    </section>
+
+    <section class="legal__section">
+      <h2 class="legal__heading" i18n="@@legal.contact">Contact</h2>
+      <p>
+        <ng-container i18n="@@legal.email">Email:</ng-container>&ngsp;
+        <a [href]="'mailto:' + info.email">{{ info.email }}</a>
+      </p>
+    </section>
+
+    <section class="legal__section">
+      <h2 class="legal__heading" i18n="@@legal.responsible">
+        Responsible for the content according to § 18 (2) MStV
+      </h2>
+      <address>
+        {{ info.name }}<br />
+        {{ info.street }}<br />
+        {{ info.city }}
+      </address>
+    </section>
+
+    <section class="legal__section">
+      <h2 class="legal__heading" i18n="@@legal.liabilityTitle">Liability for content and links</h2>
+      <p i18n="@@legal.liabilityContent">
+        I create the content of this website with care, but cannot guarantee that it is complete,
+        correct and up to date at all times. This website links to external websites, for example
+        GitHub and LinkedIn. Their operators alone are responsible for their content. At the time of
+        linking, no unlawful content was apparent; if I become aware of any, I will remove the link.
+      </p>
+    </section>
+
+    <section class="legal__section">
+      <h2 class="legal__heading" i18n="@@legal.copyrightTitle">Copyright</h2>
+      <p i18n="@@legal.copyrightContent">
+        The texts, code and project images on this website are my own work. The design is based on a
+        template of the Developer Akademie GmbH. Icons of the skill set show the logos of the
+        respective technologies; the rights belong to their owners.
+      </p>
+    </section>
+  </div>
+</article>

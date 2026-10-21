@@ -1,0 +1,84 @@
+<article class="legal" aria-labelledby="privacy-title">
+  <span class="legal__sphere" aria-hidden="true"></span>
+  <div class="legal__inner">
+    <h1 class="legal__title" id="privacy-title" i18n="@@privacy.title">Privacy policy</h1>
+
+    <section class="legal__section">
+      <h2 class="legal__heading" i18n="@@privacy.controllerTitle">1. Controller</h2>
+      <p i18n="@@privacy.controllerText">
+        Responsible for the processing of personal data on this website is:
+      </p>
+      <address>
+        {{ info.name }}<br />
+        {{ info.street }}<br />
+        {{ info.city }}<br />
+        <a [href]="'mailto:' + info.email">{{ info.email }}</a>
+      </address>
+    </section>
+
+    <section class="legal__section">
+      <h2 class="legal__heading" i18n="@@privacy.hostingTitle">2. Hosting and server log files</h2>
+      <p i18n="@@privacy.hostingText">
+        This website is hosted on a web server of an external hosting provider. When you open the
+        website, the server automatically stores information that your browser sends: IP address,
+        date and time of the request, the page requested, the referring page, browser type and
+        operating system. This data is needed to deliver the website securely and to detect errors
+        and attacks (Art. 6 (1) (f) GDPR). It is deleted after seven days at the latest, unless it is
+        needed to clarify a security incident.
+      </p>
+    </section>
+
+    <section class="legal__section">
+      <h2 class="legal__heading" i18n="@@privacy.contactTitle">3. Contact form</h2>
+      <p i18n="@@privacy.contactText">
+        When you send a message through the
+        <a routerLink="/" [fragment]="contactSection">contact form</a>, I process your name, your
+        email address and your message to answer your request. The legal basis is Art. 6 (1) (b)
+        GDPR if your request concerns a possible cooperation, otherwise my legitimate interest in
+        answering requests (Art. 6 (1) (f) GDPR). I delete the data as soon as your request is
+        settled and no legal retention periods apply.
+      </p>
+    </section>
+
+    <section class="legal__section">
+      <h2 class="legal__heading" i18n="@@privacy.cookiesTitle">4. No cookies, no tracking</h2>
+      <p i18n="@@privacy.cookiesText">
+        This website does not set cookies and does not use analytics or tracking tools. The fonts
+        are stored on this server, so no connection to external font services is made.
+      </p>
+    </section>
+
+    <section class="legal__section">
+      <h2 class="legal__heading" i18n="@@privacy.linksTitle">5. Links to GitHub and LinkedIn</h2>
+      <p i18n="@@privacy.linksText">
+        The icons for GitHub and LinkedIn are plain links. Data is only transferred to these
+        services when you click a link; from then on, the privacy policy of the respective provider
+        applies.
+      </p>
+    </section>
+
+    <section class="legal__section">
+      <h2 class="legal__heading" i18n="@@privacy.rightsTitle">6. Your rights</h2>
+      <p i18n="@@privacy.rightsText">You have the right to:</p>
+      <ul class="legal__list">
+        <li i18n="@@privacy.rightAccess">access the data stored about you (Art. 15 GDPR),</li>
+        <li i18n="@@privacy.rightRectification">
+          have incorrect data corrected (Art. 16 GDPR),
+        </li>
+        <li i18n="@@privacy.rightErasure">
+          have your data erased or its processing restricted (Art. 17 and 18 GDPR),
+        </li>
+        <li i18n="@@privacy.rightPortability">receive your data in a common format (Art. 20 GDPR),</li>
+        <li i18n="@@privacy.rightObjection">
+          object to processing based on legitimate interest (Art. 21 GDPR).
+        </li>
+      </ul>
+      <p i18n="@@privacy.complaint">
+        You can also lodge a complaint with a data protection supervisory authority, for example the
+        Saxon Data Protection and Transparency Commissioner.
+      </p>
+    </section>
+
+    <p i18n="@@privacy.date">As of October 2026</p>
+  </div>
+</article>

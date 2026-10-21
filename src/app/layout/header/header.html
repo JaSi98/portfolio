@@ -1,4 +1,8 @@
-<header class="header" [class.header--menu-open]="isMenuOpen()">
+<header
+  class="header"
+  [class.header--menu-open]="isMenuOpen()"
+  [class.header--on-hero]="isOnHero()"
+>
   <a class="header__logo" routerLink="/" (click)="closeMenu()">
     <svg class="header__logo-mark" viewBox="0 0 64 64" aria-hidden="true">
       <use href="assets/logo/logo.svg#icon"></use>
