@@ -12,6 +12,8 @@
     "nav.skills": "Skill set",
     "nav.projects": "My work",
     "nav.contact": "Contact",
+    "projects.heidihilft.description": "Website of an animal welfare association that takes in cats in need on Mallorca. Every cat has its own profile, members log in, sign up for a membership and donate online.",
+    "projects.heidihilft.alt": "Start page of the HeidiHilft website",
     "projects.join.description": "Kanban board for small teams, inspired by the Kanban system. Create and organise tasks with drag and drop, assign contacts and follow the progress live. Requests from stakeholders become tickets automatically.",
     "projects.join.alt": "Request page of the Join kanban board",
     "projects.polloLoco.description": "Jump, run and throw game based on an object-oriented approach. Help Pepe to find coins and salsa bottles to fight against the crazy hen.",

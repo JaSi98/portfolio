@@ -6,12 +6,21 @@ export interface Project {
   image: string;
   imageAlt: string;
   liveUrl: string;
-  githubUrl: string;
+  /** Left out for client projects whose code is not public. */
+  githubUrl?: string;
 }
 
 const IMAGE_FOLDER = 'assets/img/projects';
 
 export const PROJECTS: Project[] = [
+  {
+    name: 'HeidiHilft',
+    technologies: ['Angular', 'TypeScript', 'Django', 'PostgreSQL', 'Stripe'],
+    description: $localize`:@@projects.heidihilft.description:Website of an animal welfare association that takes in cats in need on Mallorca. Every cat has its own profile, members log in, sign up for a membership and donate online.`,
+    image: `${IMAGE_FOLDER}/heidihilft.webp`,
+    imageAlt: $localize`:@@projects.heidihilft.alt:Start page of the HeidiHilft website`,
+    liveUrl: 'https://heidihilft.org',
+  },
   {
     name: 'Join',
     technologies: ['Angular', 'TypeScript', 'Supabase', 'n8n', 'SCSS'],

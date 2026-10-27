@@ -31,6 +31,8 @@
     "projects.title": "Meine Projekte",
     "projects.intro": "Hier findest du eine Auswahl meiner Arbeiten – probiere die Projekte aus und sieh meine Fähigkeiten in Aktion.",
     "projects.live": "Live testen",
+    "projects.heidihilft.description": "Website eines Tierschutzvereins, der auf Mallorca Katzen in Not aufnimmt. Jede Katze hat ein eigenes Profil, Mitglieder melden sich an, schließen eine Mitgliedschaft ab und spenden online.",
+    "projects.heidihilft.alt": "Startseite der Website von HeidiHilft",
     "projects.join.description": "Kanban-Board für kleine Teams, inspiriert vom Kanban-System. Aufgaben per Drag & Drop anlegen und organisieren, Kontakte zuweisen und den Fortschritt live verfolgen. Anfragen von Stakeholdern werden automatisch zu Tickets.",
     "projects.join.alt": "Anfrageseite des Kanban-Boards Join",
     "projects.polloLoco.description": "Jump-and-Run-Spiel mit objektorientiertem Aufbau. Hilf Pepe, Münzen und Salsaflaschen zu sammeln, um gegen die verrückte Henne zu kämpfen.",

@@ -44,14 +44,16 @@
               <span i18n="@@projects.live">Live test</span>
               <span class="project__hidden-name">: {{ project.name }}</span>
             </a>
-            <a
-              class="project__button"
-              [href]="project.githubUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub<span class="project__hidden-name">: {{ project.name }}</span>
-            </a>
+            @if (project.githubUrl) {
+              <a
+                class="project__button"
+                [href]="project.githubUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub<span class="project__hidden-name">: {{ project.name }}</span>
+              </a>
+            }
           </div>
         </article>
       </li>
