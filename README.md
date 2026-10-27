@@ -56,7 +56,7 @@ The build fails if a German translation is missing.
 | [`core/data/social-links.ts`](src/app/core/data/social-links.ts) | GitHub and LinkedIn |
 | [`core/data/legal-info.ts`](src/app/core/data/legal-info.ts) | Address and email for legal notice and privacy policy |
 
-The portrait is `public/assets/img/portrait-placeholder.svg`; replace it with a compressed photo (WebP, below 500 KB) and update the `src` in [`hero.html`](src/app/pages/home/sections/hero/hero.html).
+The portrait is [`public/assets/img/jan-sippl-portrait.webp`](public/assets/img/jan-sippl-portrait.webp), a photo with transparent background; a new photo should also be a compressed WebP below 500 KB with the same file name, or the `src`, `width` and `height` in [`hero.html`](src/app/pages/home/sections/hero/hero.html) need an update.
 
 ### Contact form
 
