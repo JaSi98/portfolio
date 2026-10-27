@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+  Start page for nginx, which ignores the .htaccess: "/" leads to the language of the browser,
+  unknown paths lead to the start page of their language. English for everyone else.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Jan Sippl – Frontend Developer</title>
+  <meta name="robots" content="noindex">
+  <noscript><meta http-equiv="refresh" content="0; url=/en/"></noscript>
+  <script>
+    (function () {
+      var path = location.pathname;
+      var language = /^\/(de|en)(\/|$)/.exec(path);
+      var target = language ? language[1] : (navigator.language || '').toLowerCase().indexOf('de') === 0 ? 'de' : 'en';
+      location.replace('/' + target + '/' + location.hash);
+    })();
+  </script>
+</head>
+<body>
+  <a href="/en/">Jan Sippl – Portfolio</a>
+</body>
+</html>

@@ -72,6 +72,7 @@ The form posts `{ name, email, message }` as JSON to `CONTACT_ENDPOINT` in [`cor
 | --- | --- |
 | `de/`, `en/` | Prerendered pages of each language (`index.html`, `legal-notice/`, `privacy-policy/`) |
 | `.htaccess` | HTTPS, language redirect of `/`, fallback for unknown paths, caching and security headers |
+| `index.html` | Language redirect of `/` and of unknown paths for servers without `.htaccess` (nginx) |
 | `robots.txt`, `sitemap.xml` | Hints for search engines, including the language alternates |
 
 Upload the content of `dist/portfolio/browser` including the hidden `.htaccess` to the root of `portfolio.webstudiojs.com`. The files in `deploy/` are copied into the build by `npm run build`. Each page sets its canonical URL and `hreflang` links to `https://portfolio.webstudiojs.com` (constant `SITE_ORIGIN` in [`core/i18n/seo.ts`](src/app/core/i18n/seo.ts)).
