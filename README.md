@@ -29,11 +29,13 @@ Requirements: Node.js 22 or newer and npm.
 
 ```bash
 npm install
-npm start          # English development server on http://localhost:4200
-npm run start:de   # German development server
+npm start          # English development server on http://localhost:4300/en/
+npm run start:de   # German development server on http://localhost:4301/de/
 npm run build      # production build for both languages in dist/portfolio/browser
 npm test           # unit tests
 ```
+
+Each development server builds one language. Like on the live server, the pages lie under `/en/` and `/de/`, and each server forwards the other language to the other server (proxy files in `dev/`). With both servers running, the language switch works locally too.
 
 ### Texts and translations
 

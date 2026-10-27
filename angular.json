@@ -82,12 +82,14 @@
             "en": {
               "localize": [
                 "en"
-              ]
+              ],
+              "baseHref": "/en/"
             },
             "de": {
               "localize": [
                 "de"
-              ]
+              ],
+              "baseHref": "/de/"
             }
           },
           "defaultConfiguration": "production"
@@ -99,10 +101,14 @@
               "buildTarget": "portfolio:build:production"
             },
             "development": {
-              "buildTarget": "portfolio:build:development,en"
+              "buildTarget": "portfolio:build:development,en",
+              "proxyConfig": "dev/proxy.en.json",
+              "port": 4300
             },
             "de": {
-              "buildTarget": "portfolio:build:development,de"
+              "buildTarget": "portfolio:build:development,de",
+              "proxyConfig": "dev/proxy.de.json",
+              "port": 4301
             }
           },
           "defaultConfiguration": "development"
