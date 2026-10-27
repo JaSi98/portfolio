@@ -50,3 +50,7 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# Raw photos (only the processed portrait in public/ is used)
+/WhatsApp */
+/WhatsApp *.zip
