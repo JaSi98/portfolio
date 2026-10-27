@@ -62,7 +62,7 @@ The portrait is [`public/assets/img/jan-sippl-portrait.webp`](public/assets/img/
 
 ### Contact form
 
-The form posts `{ name, email, message }` as JSON to `CONTACT_ENDPOINT` in [`core/config/contact.ts`](src/app/core/config/contact.ts). While the constant is empty, the form shows that the message could not be sent.
+The form posts `{ name, email, message }` as JSON to `CONTACT_ENDPOINT` in [`core/config/contact.ts`](src/app/core/config/contact.ts). While the constant is empty, nothing is sent: the form waits a moment and shows its success message.
 
 ## Deployment
 
