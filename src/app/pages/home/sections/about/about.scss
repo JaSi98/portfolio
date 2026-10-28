@@ -63,6 +63,11 @@ $small-sphere-size: fluid(48px, 64px);
   font-weight: $font-weight-display;
   line-height: $line-height-tight;
   letter-spacing: $title-letter-spacing;
+
+  // The German title holds a 16-letter word, which only fits the column in a smaller size.
+  &:lang(de) {
+    font-size: font-size(display-compact);
+  }
 }
 
 .about__subtitle {
