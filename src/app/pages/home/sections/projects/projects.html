@@ -2,7 +2,7 @@
   <span class="projects__sphere projects__sphere--small" aria-hidden="true"></span>
   <span class="projects__sphere projects__sphere--medium" aria-hidden="true"></span>
 
-  <header class="projects__header">
+  <header class="projects__header" appRevealOnScroll>
     <h2 class="projects__title" id="projects-title" i18n="@@projects.title">My work</h2>
     <p class="projects__intro" i18n="@@projects.intro">
       Explore a selection of my work here – interact with projects to see my skills in action.
@@ -15,6 +15,7 @@
         <span class="project__sphere" aria-hidden="true"></span>
         <a
           class="project__image-link"
+          [appRevealOnScroll]="isOdd ? 'right' : 'left'"
           [href]="project.liveUrl"
           target="_blank"
           rel="noopener noreferrer"
@@ -30,7 +31,7 @@
             loading="lazy"
           />
         </a>
-        <article class="project__text">
+        <article class="project__text" [appRevealOnScroll]="isOdd ? 'left' : 'right'">
           <h3 class="project__name">{{ project.name }}</h3>
           <p class="project__technologies">{{ project.technologies.join(' | ') }}</p>
           <p class="project__description">{{ project.description }}</p>

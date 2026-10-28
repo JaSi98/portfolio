@@ -6,13 +6,14 @@ Personal portfolio of Jan Sippl, frontend developer. The one-page site introduce
 
 - **Hero** with greeting, job title, portrait, scroll hint and links to GitHub, the contact form and LinkedIn.
 - **About me** with location, availability and a personal text.
-- **Skill set** with the technologies and ways of working Jan uses.
+- **Skill set** with the technologies and ways of working Jan uses; a speech bubble at *Growth mindset* shows what he is learning next (on hover or keyboard focus, always visible on touch screens).
 - **My work**: Join, El Pollo Loco, Code à Cuisine and Poll App, each with preview, technologies, description, live link and GitHub link.
 - **References** of team members; the section appears as soon as quotes are added.
 - **Contact form** with validation when a field is left, reserved space for messages, a submit button that is only active for a valid form and feedback after sending.
 - **Legal notice and privacy policy** in both languages, linked in the footer.
 - **German and English**: switch in the header and in the mobile menu; `/` leads to the language of the browser.
 - Responsive from 320 px to wide screens (content keeps the desktop width from 1440 px), burger menu up to tablet width, keyboard and screen reader friendly, reduced motion respected.
+- **Scroll animations:** sections fade in from below as they scroll into view, the projects slide in from the side of their image; content that is already on screen stays still.
 
 ## Tech stack
 
@@ -52,7 +53,7 @@ The build fails if a German translation is missing.
 | File | Content |
 | --- | --- |
 | [`core/data/projects.ts`](src/app/core/data/projects.ts) | Projects with live and GitHub links |
-| [`core/data/skills.ts`](src/app/core/data/skills.ts) | Skill set |
+| [`core/data/skills.ts`](src/app/core/data/skills.ts) | Skill set and the topics in the learning bubble |
 | [`core/data/availability.ts`](src/app/core/data/availability.ts) | Location and availability |
 | [`core/data/references.ts`](src/app/core/data/references.ts) | Quotes of team members (empty list hides the section) |
 | [`core/data/social-links.ts`](src/app/core/data/social-links.ts) | GitHub and LinkedIn |

@@ -6,6 +6,7 @@ import { SECTION_IDS } from '../../../../core/data/navigation';
 import { ContactService } from '../../../../core/services/contact-service';
 import { Checkbox } from '../../../../shared/components/checkbox/checkbox';
 import { TextField } from '../../../../shared/components/text-field/text-field';
+import { RevealOnScroll } from '../../../../shared/directives/reveal-on-scroll';
 
 export type SendState = 'idle' | 'sending' | 'sent' | 'failed';
 
@@ -17,7 +18,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 /** Contact section: invitation to get in touch and the form that sends a message. */
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule, RouterLink, TextField, Checkbox],
+  imports: [RevealOnScroll, ReactiveFormsModule, RouterLink, TextField, Checkbox],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })

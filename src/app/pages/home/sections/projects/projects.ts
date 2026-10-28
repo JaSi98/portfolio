@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 
 import { SECTION_IDS } from '../../../../core/data/navigation';
 import { PROJECTS } from '../../../../core/data/projects';
+import { RevealOnScroll } from '../../../../shared/directives/reveal-on-scroll';
 
 /** My work: one row per project, image and text alternate sides. */
 @Component({
   selector: 'app-projects',
+  imports: [RevealOnScroll],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
 })

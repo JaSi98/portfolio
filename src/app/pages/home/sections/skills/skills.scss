@@ -13,6 +13,23 @@ $title-gap: fluid(40px, 56px);
 $icon-lift: -6px;
 $mobile-columns: 3;
 
+$bubble-width: 236px;
+$bubble-padding: 16px 20px 20px;
+$bubble-radius: 30px;
+$bubble-gap: 12px;
+$bubble-offset: 8px;
+$bubble-layer: 2;
+$bubble-shadow: 0 4px 12px $color-shadow;
+$bubble-hidden-transform: translateY($bubble-offset) scale(0.96);
+$topic-gap: 32px;
+$topic-icon-size: 48px;
+$topic-name-gap: 6px;
+$tail-width: 26px;
+$tail-height: 18px;
+$tail-inset: 36px;
+// Below this width the item can end a full row, so the bubble would leave the page on the right.
+$bubble-flip-width: 1180px;
+
 .skills {
   @include focus-ring-on-dark;
   background: $gradient-band;
@@ -78,4 +95,109 @@ $mobile-columns: 3;
 
 .skills__name {
   font-size: font-size(body-s);
+}
+
+.skills__item--learning {
+  position: relative;
+  border-radius: $bubble-radius;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Speech bubble with the technologies Jan is learning next; it opens on hover or keyboard focus
+// and stays open on touch screens, where hovering is not possible.
+.learning-bubble {
+  @include reveal-hidden($bubble-hidden-transform);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  z-index: $bubble-layer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $bubble-gap;
+  width: $bubble-width;
+  padding: $bubble-padding;
+  border-radius: $bubble-radius;
+  background-color: $color-white;
+  color: $color-black;
+  filter: drop-shadow($bubble-shadow);
+  transform-origin: bottom left;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: $tail-inset;
+    width: $tail-width;
+    height: $tail-height;
+    background-color: inherit;
+    clip-path: polygon(0 0, 100% 0, 15% 100%);
+  }
+
+  .skills__item--learning:hover &,
+  .skills__item--learning:focus-visible & {
+    @include reveal-visible;
+  }
+
+  @media (max-width: $bubble-flip-width) {
+    right: 50%;
+    left: auto;
+    transform-origin: bottom right;
+
+    &::after {
+      right: $tail-inset;
+      left: auto;
+      clip-path: polygon(0 0, 100% 0, 85% 100%);
+    }
+  }
+
+  // Below the item and wider than its cell; the item centres it, so it reaches out evenly.
+  @include touch-or-mobile {
+    @include reveal-visible;
+    position: static;
+    flex-shrink: 0;
+    margin-top: $tail-height;
+
+    &::after {
+      top: auto;
+      right: auto;
+      bottom: 100%;
+      left: 50%;
+      translate: -50% 0;
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    }
+  }
+}
+
+.learning-bubble__text {
+  font-size: font-size(body-s);
+  line-height: $line-height-base;
+}
+
+.learning-bubble__topics {
+  display: flex;
+  justify-content: center;
+  gap: $topic-gap;
+}
+
+.learning-bubble__topic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $topic-name-gap;
+}
+
+.learning-bubble__icon {
+  width: $topic-icon-size;
+  height: $topic-icon-size;
+  object-fit: contain;
+}
+
+.learning-bubble__name {
+  font-family: $font-family-button;
+  font-size: font-size(body-s);
+  font-weight: $font-weight-bold;
 }

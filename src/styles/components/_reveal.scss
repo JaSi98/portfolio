@@ -1,0 +1,28 @@
+// Elements that fade in while they scroll into view (see the RevealOnScroll directive). Only
+// opacity and transform change, so the content stays in the accessibility tree.
+$reveal-duration: 700ms;
+$reveal-distance: 48px;
+$reveal-easing: cubic-bezier(0.22, 1, 0.36, 1);
+$reveal-offsets: (
+  up: translateY($reveal-distance),
+  left: translateX(-$reveal-distance),
+  right: translateX($reveal-distance),
+);
+
+.reveal {
+  opacity: 0;
+  transition:
+    opacity $reveal-duration $reveal-easing,
+    transform $reveal-duration $reveal-easing;
+
+  @each $direction, $offset in $reveal-offsets {
+    &--from-#{$direction} {
+      transform: $offset;
+    }
+  }
+
+  &.reveal--visible {
+    opacity: 1;
+    transform: none;
+  }
+}

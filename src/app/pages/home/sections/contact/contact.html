@@ -6,7 +6,7 @@
   <div class="contact__inner">
     <h2 class="contact__title" id="contact-title" i18n="@@contact.title">Contact</h2>
 
-    <div class="contact__intro">
+    <div class="contact__intro" appRevealOnScroll>
       <h3 class="contact__subtitle" i18n="@@contact.subtitle">Got a problem to solve?</h3>
       <p i18n="@@contact.text">
         Tell me about your project or the role you want to fill. I am looking forward to bringing
@@ -17,7 +17,7 @@
       </p>
     </div>
 
-    <form class="contact__form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <form class="contact__form" appRevealOnScroll [formGroup]="form" (ngSubmit)="submit()" novalidate>
       <app-text-field
         formControlName="name"
         i18n-label="@@contact.name"

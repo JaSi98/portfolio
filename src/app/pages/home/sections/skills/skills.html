@@ -1,12 +1,36 @@
 <section class="skills" [id]="sectionId" aria-labelledby="skills-title">
   <div class="skills__inner">
-    <h2 class="skills__title" id="skills-title" i18n="@@skills.title">Skill set</h2>
-    <ul class="skills__list">
+    <h2 class="skills__title" id="skills-title" i18n="@@skills.title" appRevealOnScroll>Skill set</h2>
+    <ul class="skills__list" appRevealOnScroll>
       @for (skill of skills; track skill.icon) {
-        <li class="skills__item">
-          <img class="skills__icon" [src]="skill.icon" alt="" width="71" height="75" />
-          <span class="skills__name">{{ skill.name }}</span>
-        </li>
+        @if (skill.learningTopics; as topics) {
+          <li
+            class="skills__item skills__item--learning"
+            tabindex="0"
+            [attr.aria-describedby]="learningBubbleId"
+          >
+            <img class="skills__icon" [src]="skill.icon" alt="" width="71" height="75" />
+            <span class="skills__name">{{ skill.name }}</span>
+            <div class="learning-bubble" [id]="learningBubbleId">
+              <p class="learning-bubble__text" i18n="@@skills.learningIntro">
+                I have a special interest in learning
+              </p>
+              <ul class="learning-bubble__topics">
+                @for (topic of topics; track topic.name) {
+                  <li class="learning-bubble__topic">
+                    <img class="learning-bubble__icon" [src]="topic.icon" alt="" width="48" height="48" />
+                    <span class="learning-bubble__name">{{ topic.name }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          </li>
+        } @else {
+          <li class="skills__item">
+            <img class="skills__icon" [src]="skill.icon" alt="" width="71" height="75" />
+            <span class="skills__name">{{ skill.name }}</span>
+          </li>
+        }
       }
     </ul>
   </div>

@@ -25,6 +25,13 @@ $breakpoint-mobile: 760px;
   }
 }
 
+// Touch screens and phones, where hover effects are not reachable or space is too narrow.
+@mixin touch-or-mobile {
+  @media (hover: none), (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
 @mixin flex-center {
   display: flex;
   justify-content: center;

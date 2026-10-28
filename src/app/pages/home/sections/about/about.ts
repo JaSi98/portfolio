@@ -3,11 +3,12 @@ import { RouterLink } from '@angular/router';
 
 import { AVAILABILITY_ITEMS } from '../../../../core/data/availability';
 import { SECTION_IDS } from '../../../../core/data/navigation';
+import { RevealOnScroll } from '../../../../shared/directives/reveal-on-scroll';
 
 /** About me: heading, availability facts, personal text and a link to the contact form. */
 @Component({
   selector: 'app-about',
-  imports: [RouterLink],
+  imports: [RevealOnScroll, RouterLink],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })
