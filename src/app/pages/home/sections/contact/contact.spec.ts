@@ -22,6 +22,7 @@ describe('Contact', () => {
       email: 'ada@example.com',
       message: 'I would like to talk about a project.',
       privacy: true,
+      website: '',
     });
     fixture.detectChanges();
   }

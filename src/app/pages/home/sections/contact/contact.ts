@@ -31,6 +31,7 @@ export class Contact {
     email: ['', [Validators.required, Validators.pattern(EMAIL_PATTERN)]],
     message: ['', [Validators.required, Validators.minLength(MESSAGE_MIN_LENGTH)]],
     privacy: [false, Validators.requiredTrue],
+    website: [''],
   });
 
   /** Sends the message and shows whether it arrived. */
@@ -39,9 +40,9 @@ export class Contact {
       return;
     }
     this.sendState.set('sending');
-    const { name, email, message } = this.form.getRawValue();
+    const { name, email, message, privacy, website } = this.form.getRawValue();
     try {
-      await this.contactService.send({ name, email, message });
+      await this.contactService.send({ name, email, message, privacyAccepted: privacy, website });
       this.form.reset();
       this.sendState.set('sent');
     } catch {

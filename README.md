@@ -62,7 +62,7 @@ The portrait is [`public/assets/img/jan-sippl-portrait.webp`](public/assets/img/
 
 ### Contact form
 
-The form posts `{ name, email, message }` as JSON to `CONTACT_ENDPOINT` in [`core/config/contact.ts`](src/app/core/config/contact.ts). While the constant is empty, nothing is sent: the form waits a moment and shows its success message.
+The form posts name, email, message, the privacy consent and a hidden honeypot field as JSON to `CONTACT_ENDPOINT` in [`core/config/contact.ts`](src/app/core/config/contact.ts). The contact API at `https://portfolio-api.wjs-projects.de` (separate Django project `portfolio-api`) validates and stores the message; on any error the form asks to try again later.
 
 ## Deployment
 

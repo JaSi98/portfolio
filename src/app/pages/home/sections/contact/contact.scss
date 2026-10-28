@@ -98,9 +98,15 @@ $feedback-min-height: 44px;
 
 .contact__form {
   grid-area: form;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: $form-gap;
+}
+
+// Out of sight for people and screen readers; only bots that fill in every field find it.
+.contact__honeypot {
+  @include visually-hidden;
 }
 
 .contact__link {
