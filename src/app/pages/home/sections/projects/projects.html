@@ -41,8 +41,7 @@
               [href]="project.liveUrl"
               target="_blank"
               rel="noopener noreferrer"
-              i18n-aria-label="@@projects.liveLabel"
-              aria-label="Live test: {{ project.name }}"
+              [attr.aria-label]="liveLabel(project.name)"
             >
               <span i18n="@@projects.live">Live test</span>
             </a>
