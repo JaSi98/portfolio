@@ -6,12 +6,13 @@ import { SECTION_IDS } from '../../../../core/data/navigation';
 import { ContactService } from '../../../../core/services/contact-service';
 import { Checkbox } from '../../../../shared/components/checkbox/checkbox';
 import { TextField } from '../../../../shared/components/text-field/text-field';
+import { minTrimmedLength, personName } from '../../../../shared/forms/text-validators';
 import { RevealOnScroll } from '../../../../shared/directives/reveal-on-scroll';
 
 export type SendState = 'idle' | 'sending' | 'sent' | 'failed';
 
 const MESSAGE_MIN_LENGTH = 10;
-const NAME_MIN_LENGTH = 2;
+const NAME_MIN_LETTERS = 2;
 // Stricter than Validators.email: requires a dot in the domain, as real addresses have.
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -28,9 +29,10 @@ export class Contact {
   protected readonly sectionId = SECTION_IDS.contact;
   protected readonly sendState = signal<SendState>('idle');
   protected readonly form = inject(NonNullableFormBuilder).group({
-    name: ['', [Validators.required, Validators.minLength(NAME_MIN_LENGTH)]],
+    // Spaces alone do not count: the validators look at the text without the spaces around it.
+    name: ['', [Validators.required, personName(NAME_MIN_LETTERS)]],
     email: ['', [Validators.required, Validators.pattern(EMAIL_PATTERN)]],
-    message: ['', [Validators.required, Validators.minLength(MESSAGE_MIN_LENGTH)]],
+    message: ['', [Validators.required, minTrimmedLength(MESSAGE_MIN_LENGTH)]],
     privacy: [false, Validators.requiredTrue],
     website: [''],
   });
@@ -43,7 +45,13 @@ export class Contact {
     this.sendState.set('sending');
     const { name, email, message, privacy, website } = this.form.getRawValue();
     try {
-      await this.contactService.send({ name, email, message, privacyAccepted: privacy, website });
+      await this.contactService.send({
+        name: name.trim(),
+        email: email.trim(),
+        message: message.trim(),
+        privacyAccepted: privacy,
+        website,
+      });
       this.form.reset();
       this.sendState.set('sent');
     } catch {

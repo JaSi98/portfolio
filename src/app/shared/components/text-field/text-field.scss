@@ -10,7 +10,10 @@ $label-padding: 0 4px;
 $status-size: 25px;
 $status-inset: 16px;
 $textarea-height: 202px;
-$error-line-height: 22px;
+$label-floating-scale: 0.85;
+$error-gap: 4px;
+// Room for two lines, so a message that wraps on small screens does not move the form.
+$error-lines: 2;
 
 :host {
   display: block;
@@ -52,8 +55,9 @@ $error-line-height: 22px;
     @include required-mark;
   }
 
+  // Centred on the border line, so it stays inside the field's own space.
   .text-field--active & {
-    transform: translateY(-140%);
+    transform: translateY(calc(-#{$label-top} - 50%)) scale($label-floating-scale);
   }
 }
 
@@ -80,10 +84,11 @@ $error-line-height: 22px;
   }
 }
 
-// Reserved line for the message, so it does not shift the fields below.
+// Reserved lines for the message, so it does not shift the fields below.
 .text-field__error {
-  min-height: $error-line-height;
-  padding-top: 4px;
+  min-height: calc(#{$error-lines} * 1lh + #{$error-gap});
+  padding-top: $error-gap;
   color: $color-error;
   font-size: font-size(small);
+  line-height: $line-height-base;
 }

@@ -11,14 +11,15 @@ $intro-width: math.percentage(math.div(473, 1241));
 $column-gap: fluid(40px, 151px);
 $intro-gap: fluid(16px, 24px);
 $title-gap: fluid(32px, 64px);
-$form-gap: 8px;
+// Keeps the label of a field, which sits on its top border, clear of the message above.
+$form-gap: 12px;
 $top-button-size: 40px;
 $top-icon-size: 24px;
-$feedback-min-height: 44px;
+// Room for the longest feedback on small screens.
+$feedback-lines: 3;
 
 .contact {
   position: relative;
-  overflow: hidden;
   background: $gradient-hero;
 }
 
@@ -104,9 +105,9 @@ $feedback-min-height: 44px;
   gap: $form-gap;
 }
 
-// Out of sight for people and screen readers; only bots that fill in every field find it.
+// Not rendered for people and screen readers; only bots that fill in every field find it.
 .contact__honeypot {
-  @include visually-hidden;
+  display: none;
 }
 
 .contact__link {
@@ -136,9 +137,10 @@ $feedback-min-height: 44px;
 
 // Reserved space, so the feedback does not move the layout when it appears.
 .contact__feedback {
-  min-height: $feedback-min-height;
+  min-height: calc(#{$feedback-lines} * 1lh);
   color: $color-primary-dark;
   font-size: font-size(body-s);
+  line-height: $line-height-base;
   text-align: center;
 
   &--error {
@@ -169,8 +171,4 @@ $feedback-min-height: 44px;
   width: $top-icon-size;
   height: $top-icon-size;
   fill: currentColor;
-}
-
-.contact__top-label {
-  @include visually-hidden;
 }

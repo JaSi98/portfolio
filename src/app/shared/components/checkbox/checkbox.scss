@@ -6,7 +6,9 @@ $box-size: 18px;
 $box-border: 2px;
 $box-radius: 2px;
 $label-gap: 10px;
-$error-line-height: 22px;
+$error-gap: 4px;
+// Room for two lines, so a message that wraps on small screens does not move the form.
+$error-lines: 2;
 
 .checkbox {
   display: grid;
@@ -52,8 +54,9 @@ $error-line-height: 22px;
 
 .checkbox__error {
   grid-column: 2;
-  min-height: $error-line-height;
-  padding-top: 4px;
+  min-height: calc(#{$error-lines} * 1lh + #{$error-gap});
+  padding-top: $error-gap;
   color: $color-error;
   font-size: font-size(small);
+  line-height: $line-height-base;
 }

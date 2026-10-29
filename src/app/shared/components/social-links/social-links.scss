@@ -9,14 +9,15 @@ $hover-scale: 1.15;
   display: block;
 }
 
-.social-links__list {
-  display: flex;
-  flex-direction: column;
-  gap: $gap;
+// The direction is a custom property, so a section can line the icons up differently by media query.
+:host(.social-links--row) {
+  --social-links-direction: row;
 }
 
-:host(.social-links--row) .social-links__list {
-  flex-direction: row;
+.social-links__list {
+  display: flex;
+  flex-direction: var(--social-links-direction, column);
+  gap: $gap;
 }
 
 .social-links__link {
@@ -36,8 +37,4 @@ $hover-scale: 1.15;
   width: $icon-size;
   height: $icon-size;
   transition: transform $motion-duration $motion-easing;
-}
-
-.social-links__label {
-  @include visually-hidden;
 }

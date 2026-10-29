@@ -3,11 +3,16 @@
   [class.header--menu-open]="isMenuOpen()"
   [class.header--on-hero]="isOnHero()"
 >
-  <a class="header__logo" routerLink="/" (click)="closeMenu()">
+  <a
+    class="header__logo"
+    routerLink="/"
+    (click)="closeMenu()"
+    i18n-aria-label="@@header.home"
+    aria-label="Jan Sippl – home"
+  >
     <svg class="header__logo-mark" viewBox="0 0 64 64" aria-hidden="true">
       <use href="assets/logo/logo.svg#icon"></use>
     </svg>
-    <span class="header__logo-label" i18n="@@header.home">Jan Sippl – home</span>
   </a>
 
   <nav class="header__nav" i18n-aria-label="@@header.navigation" aria-label="Main navigation">
@@ -26,12 +31,13 @@
     type="button"
     aria-controls="mobile-menu"
     [attr.aria-expanded]="isMenuOpen()"
+    i18n-aria-label="@@header.menu"
+    aria-label="Menu"
     (click)="toggleMenu()"
   >
     <span class="header__burger-line" aria-hidden="true"></span>
     <span class="header__burger-line" aria-hidden="true"></span>
     <span class="header__burger-line" aria-hidden="true"></span>
-    <span class="header__burger-label" i18n="@@header.menu">Menu</span>
   </button>
 
   <nav

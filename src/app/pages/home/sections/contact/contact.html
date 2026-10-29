@@ -24,7 +24,7 @@
         label="Your name"
         autocomplete="name"
         i18n-errorMessage="@@contact.nameError"
-        errorMessage="Please enter your name."
+        errorMessage="Please enter your name with at least 2 letters."
         [isInvalid]="isInvalid('name')"
         [isValid]="isValid('name')"
       />
@@ -102,11 +102,16 @@
       </div>
     </form>
 
-    <a class="contact__top" routerLink="/" fragment="top">
+    <a
+      class="contact__top"
+      routerLink="/"
+      fragment="top"
+      i18n-aria-label="@@contact.toTop"
+      aria-label="Back to top"
+    >
       <svg class="contact__top-icon" viewBox="0 -960 960 960" aria-hidden="true">
         <use href="assets/icons/arrow-up.svg#icon"></use>
       </svg>
-      <span class="contact__top-label" i18n="@@contact.toTop">Back to top</span>
     </a>
   </div>
 </section>

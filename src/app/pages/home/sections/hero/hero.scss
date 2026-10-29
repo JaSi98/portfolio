@@ -7,46 +7,81 @@
 // Positions of the design frame (1440 × 1024), as shares of width and height.
 $design-width: 1440;
 $design-height: 1024;
-$hero-min-height: 640px;
 $photo-height: math.percentage(math.div(917, $design-height));
 $photo-max-width: math.percentage(math.div(761, $design-width));
 $photo-left: math.percentage(math.div(32, $design-width));
 $heading-top: math.percentage(math.div(227, $design-height));
+// Height of the header (padding and logo), which the heading must not reach into.
+$header-height: fluid(84px, 104px);
 $heading-right: math.percentage(math.div(64, $design-width));
 $heading-max-width: math.percentage(math.div(645, $design-width));
 $scroll-left: math.percentage(math.div(1034, $design-width));
 $scroll-top: math.percentage(math.div(656, $design-height));
+// On low screens the social icons stand in a row and need the space next to the scroll line.
+$low-screen-scroll-left: 60%;
 $social-right: math.percentage(math.div(100, $design-width));
-$social-top: math.percentage(math.div(789, $design-height));
-$circle-size: math.percentage(math.div(892, $design-width));
-$circle-left: math.percentage(math.div(-199, $design-width));
-$circle-top: math.div(-71, $design-width) * 100vw;
+$social-bottom: math.percentage(math.div(65, $design-height));
 
+// The circle is a background image, so it ends at the edges of the hero by itself. Its sizes use
+// the width of the hero (cqw), because background positions in % would align the image instead.
+$circle-share: math.div(892, $design-width);
+$circle-left-share: math.div(-199, $design-width) * 100cqw;
+$circle-size: min(#{$circle-share * 100cqw}, #{$content-max-width * $circle-share});
+$circle-left: calc(50cqw - #{math.div($content-max-width, 2)} + #{$circle-left-share});
+$circle-top: math.div(-71, $design-width) * 100cqw;
+
+// Font sizes keep their share of width and height, so the text fits next to the circle and on
+// low screens.
 $title-letter-spacing: -0.025em;
-$title-max-viewport-share: 16.4vw;
-$greeting-desktop-share: math.div(64, $design-width) * 100vw;
-$title-desktop-share: math.div(128, $design-width) * 100vw;
+$greeting-width-share: math.div(64, $design-width) * 100vw;
+$greeting-height-share: math.div(64, $design-height) * 100svh;
+$title-width-share: math.div(128, $design-width) * 100vw;
+$title-height-share: math.div(128, $design-height) * 100svh;
 $scroll-gap: 10px;
 $line-width: 2px;
 $arrow-size: 24px;
 
-// Phone layout: the circle fills the top, the portrait stands at the bottom.
-$mobile-circle-size: 167vw;
-$mobile-circle-left: -68vw;
-$mobile-circle-top: -16vw;
-$mobile-heading-top: 140px;
-$mobile-photo-height: 62%;
+// Phone layout: the circle fills the top, the text starts below the header and the portrait
+// takes the remaining height.
+$mobile-design-height: 844;
+$mobile-circle-size: 167cqw;
+$mobile-circle-left: -68cqw;
+$mobile-circle-top: -16cqw;
+$mobile-heading-top: clamp(96px, #{math.div(140, $mobile-design-height) * 100svh}, 140px);
+$mobile-title-width-share: 16.4vw;
+$mobile-title-height-share: math.div(64, $mobile-design-height) * 100svh;
+$mobile-greeting-height-share: math.div(36, $mobile-design-height) * 100svh;
+$mobile-photo-gap: 16px;
 $mobile-scroll-right: 6px;
 $mobile-scroll-bottom: 24px;
 
+:host {
+  display: block;
+  container-type: inline-size;
+}
+
 .hero {
-  position: relative;
   height: 100vh;
   height: 100svh;
-  min-height: $hero-min-height;
-  overflow: hidden;
-  border-bottom: $line-width solid $color-primary;
-  background: $gradient-hero;
+  background:
+    url('../../../../../styles/decor/circle.svg') no-repeat $circle-left $circle-top /
+      $circle-size $circle-size,
+    $gradient-hero;
+
+  @include tablet {
+    background-position:
+      $circle-left-share $circle-top,
+      0 0;
+  }
+
+  @include mobile {
+    background-position:
+      $mobile-circle-left $mobile-circle-top,
+      0 0;
+    background-size:
+      $mobile-circle-size $mobile-circle-size,
+      auto;
+  }
 }
 
 .hero__inner {
@@ -54,25 +89,11 @@ $mobile-scroll-bottom: 24px;
   height: 100%;
   max-width: $content-max-width;
   margin-inline: auto;
-}
-
-.hero__circle {
-  position: absolute;
-  top: $circle-top;
-  left: calc(50% - #{math.div($content-max-width, 2)} + #{$circle-left});
-  width: min($circle-size, #{$content-max-width * math.div(892, $design-width)});
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: $gradient-circle;
-
-  @include tablet {
-    left: $circle-left;
-  }
 
   @include mobile {
-    top: $mobile-circle-top;
-    left: $mobile-circle-left;
-    width: $mobile-circle-size;
+    display: flex;
+    flex-direction: column;
+    padding-top: $mobile-heading-top;
   }
 }
 
@@ -87,16 +108,20 @@ $mobile-scroll-bottom: 24px;
   object-position: bottom;
 
   @include mobile {
-    left: 50%;
-    max-width: 100%;
-    height: $mobile-photo-height;
-    transform: translateX(-50%);
+    position: static;
+    flex: 1 1 0;
+    order: 1;
+    min-height: 0;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    margin-top: $mobile-photo-gap;
   }
 }
 
 .hero__heading {
   position: absolute;
-  top: $heading-top;
+  top: max(#{$heading-top}, #{$header-height});
   right: $heading-right;
   display: flex;
   flex-direction: column;
@@ -107,39 +132,41 @@ $mobile-scroll-bottom: 24px;
   text-align: right;
 
   @include mobile {
-    top: $mobile-heading-top;
-    left: $page-padding-inline;
-    right: $page-padding-inline;
+    position: static;
     align-items: flex-start;
     max-width: none;
+    padding-inline: $page-padding-inline;
     color: $color-white;
     text-align: left;
   }
 }
 
 .hero__greeting {
-  font-size: min(#{font-size(hero-greeting)}, #{$greeting-desktop-share});
+  font-size: min(#{font-size(hero-greeting)}, #{$greeting-width-share}, #{$greeting-height-share});
+  line-height: $line-height-tight;
 
   @include mobile {
-    font-size: font-size(hero-greeting);
+    font-size: min(#{font-size(hero-greeting)}, #{$mobile-greeting-height-share});
   }
-
-  line-height: $line-height-tight;
 }
 
 .hero__title {
   font-family: $font-family-display;
   // Between phone and desktop the title keeps its share of the width, so it stays next to the
   // circle; below the design's phone width it shrinks with the screen, so both words fit.
-  font-size: min(#{font-size(hero-title)}, #{$title-desktop-share});
-
-  @include mobile {
-    font-size: min(#{font-size(hero-title)}, #{$title-max-viewport-share});
-  }
+  font-size: min(#{font-size(hero-title)}, #{$title-width-share}, #{$title-height-share});
   font-weight: $font-weight-display;
   line-height: $line-height-tight;
   letter-spacing: $title-letter-spacing;
   text-transform: uppercase;
+
+  @include mobile {
+    font-size: min(
+      #{font-size(hero-title)},
+      #{$mobile-title-width-share},
+      #{$mobile-title-height-share}
+    );
+  }
 }
 
 .hero__scroll {
@@ -157,6 +184,10 @@ $mobile-scroll-bottom: 24px;
   text-decoration: none;
   text-transform: uppercase;
   transform: translateX(-50%);
+
+  @include low-screen {
+    left: $low-screen-scroll-left;
+  }
 
   @include hover {
     .hero__scroll-line {
@@ -187,6 +218,15 @@ $mobile-scroll-bottom: 24px;
   }
 }
 
+// On phones held sideways the vertical label would run over the circle; the arrow is enough.
+.hero__scroll-label--mobile {
+  @include mobile {
+    @include low-screen {
+      display: none;
+    }
+  }
+}
+
 .hero__scroll-label--desktop,
 .hero__scroll-line {
   @include mobile {
@@ -211,8 +251,12 @@ $mobile-scroll-bottom: 24px;
 
 .hero__social {
   position: absolute;
-  top: $social-top;
   right: $social-right;
+  bottom: $social-bottom;
+
+  @include low-screen {
+    --social-links-direction: row;
+  }
 
   @include mobile {
     display: none;

@@ -1,5 +1,4 @@
 <section class="hero" id="top" aria-labelledby="hero-title">
-  <div class="hero__circle" aria-hidden="true"></div>
   <div class="hero__inner">
     <img
       class="hero__photo"
@@ -16,7 +15,13 @@
       <span class="hero__title" i18n="@@hero.title">Frontend Developer</span>
     </h1>
 
-    <a class="hero__scroll" routerLink="/" [fragment]="nextSection">
+    <a
+      class="hero__scroll"
+      routerLink="/"
+      [fragment]="nextSection"
+      i18n-aria-label="@@hero.scrollDown"
+      aria-label="Scroll down"
+    >
       <span class="hero__scroll-label hero__scroll-label--desktop" i18n="@@hero.scroll">Scroll</span>
       <span class="hero__scroll-label hero__scroll-label--mobile" i18n="@@hero.scrollDown"
         >Scroll down</span

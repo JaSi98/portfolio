@@ -1,20 +1,35 @@
 <ul class="social-links__list">
   <li>
-    <a class="social-links__link" [href]="github.url" target="_blank" rel="noopener noreferrer">
+    <a
+      class="social-links__link"
+      [href]="github.url"
+      target="_blank"
+      rel="noopener noreferrer"
+      [attr.aria-label]="github.label"
+    >
       <img class="social-links__icon" [src]="github.icon" alt="" width="30" height="30" />
-      <span class="social-links__label">{{ github.label }}</span>
     </a>
   </li>
   <li>
-    <a class="social-links__link" routerLink="/" [fragment]="contactSection">
+    <a
+      class="social-links__link"
+      routerLink="/"
+      [fragment]="contactSection"
+      i18n-aria-label="@@social.contact"
+      aria-label="Contact form"
+    >
       <img class="social-links__icon" [src]="mailIcon" alt="" width="30" height="30" />
-      <span class="social-links__label" i18n="@@social.contact">Contact form</span>
     </a>
   </li>
   <li>
-    <a class="social-links__link" [href]="linkedIn.url" target="_blank" rel="noopener noreferrer">
+    <a
+      class="social-links__link"
+      [href]="linkedIn.url"
+      target="_blank"
+      rel="noopener noreferrer"
+      [attr.aria-label]="linkedIn.label"
+    >
       <img class="social-links__icon" [src]="linkedIn.icon" alt="" width="30" height="30" />
-      <span class="social-links__label">{{ linkedIn.label }}</span>
     </a>
   </li>
 </ul>

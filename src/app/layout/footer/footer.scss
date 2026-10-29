@@ -46,10 +46,6 @@ $underline-offset: 4px;
   height: $logo-size;
 }
 
-.footer__hidden {
-  @include visually-hidden;
-}
-
 .footer__center {
   display: flex;
   flex-direction: column;

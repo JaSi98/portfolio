@@ -37,6 +37,20 @@ describe('Contact', () => {
     expect(button.disabled).toBe(false);
   });
 
+  it('does not accept a name or message made of spaces', () => {
+    const fixture = TestBed.createComponent(Contact);
+    fixture.detectChanges();
+    fillForm(fixture);
+    const form = (fixture.componentInstance as unknown as { form: Contact['form'] }).form;
+    form.patchValue({ name: '   ', message: '            ' });
+    fixture.detectChanges();
+
+    const button: HTMLButtonElement = fixture.nativeElement.querySelector('.contact__submit');
+    expect(form.controls.name.invalid).toBe(true);
+    expect(form.controls.message.invalid).toBe(true);
+    expect(button.disabled).toBe(true);
+  });
+
   it('shows a success message after sending', async () => {
     send.mockResolvedValue(undefined);
     const fixture = TestBed.createComponent(Contact);

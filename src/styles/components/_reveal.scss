@@ -1,12 +1,26 @@
+@use 'sass:map';
+
 // Elements that fade in while they scroll into view (see the RevealOnScroll directive). Only
 // opacity and transform change, so the content stays in the accessibility tree.
+// Elements from the sides grow from their own edge instead of sliding in, so before they appear
+// they never reach over the edge of the page.
 $reveal-duration: 700ms;
 $reveal-distance: 48px;
+$reveal-side-scale: 0.92;
 $reveal-easing: cubic-bezier(0.22, 1, 0.36, 1);
 $reveal-offsets: (
-  up: translateY($reveal-distance),
-  left: translateX(-$reveal-distance),
-  right: translateX($reveal-distance),
+  up: (
+    transform: translateY($reveal-distance),
+    origin: center,
+  ),
+  left: (
+    transform: scale($reveal-side-scale),
+    origin: left center,
+  ),
+  right: (
+    transform: scale($reveal-side-scale),
+    origin: right center,
+  ),
 );
 
 .reveal {
@@ -17,7 +31,8 @@ $reveal-offsets: (
 
   @each $direction, $offset in $reveal-offsets {
     &--from-#{$direction} {
-      transform: $offset;
+      transform: map.get($offset, transform);
+      transform-origin: map.get($offset, origin);
     }
   }
 

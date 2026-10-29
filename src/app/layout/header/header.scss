@@ -12,8 +12,11 @@ $burger-width: 30px;
 $burger-line-height: 2px;
 $burger-line-gap: 8px;
 $burger-touch-size: 44px;
-$menu-link-gap: 33px;
-$menu-padding-top: 290px;
+// The menu centres its links and shrinks the gaps on low screens, so all links fit without
+// scrolling; the top padding keeps them clear of the logo.
+$menu-link-gap: clamp(12px, 4svh, 33px);
+$menu-padding-top: clamp(84px, 12svh, 104px);
+$menu-padding-bottom: clamp(24px, 12svh, 104px);
 $menu-padding-inline: 28vw;
 $header-layer: 10;
 $menu-layer: 5;
@@ -52,11 +55,6 @@ $menu-layer: 5;
 .header__logo-mark {
   width: $logo-size;
   height: $logo-size;
-}
-
-.header__logo-label,
-.header__burger-label {
-  @include visually-hidden;
 }
 
 .header__nav {
@@ -161,10 +159,11 @@ $line-shift: $burger-line-gap + $burger-line-height;
   z-index: $menu-layer;
   display: flex;
   flex-direction: column;
+  // "safe" starts at the top instead of pushing the first link under the logo.
+  justify-content: safe center;
   gap: $menu-link-gap;
-  padding: $menu-padding-top $menu-padding-inline;
+  padding: $menu-padding-top $menu-padding-inline $menu-padding-bottom;
   background: $gradient-hero;
-  overflow-y: auto;
 
   &--open {
     @include reveal-visible;

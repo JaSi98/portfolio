@@ -10,23 +10,20 @@ $skip-link-layer: 20;
   display: contents;
 }
 
-// Hidden until a keyboard user tabs to it, then it jumps over the navigation.
+// Waits above the screen until a keyboard user tabs to it, then it jumps over the navigation.
 .skip-link {
-  @include visually-hidden;
+  position: fixed;
+  top: $skip-link-offset;
+  left: $skip-link-offset;
+  z-index: $skip-link-layer;
+  padding: $skip-link-padding;
+  border-radius: $radius-m;
+  background-color: $color-white;
+  color: $color-primary-dark;
+  transform: translateY(calc(-100% - #{2 * $skip-link-offset}));
 
   &:focus-visible {
-    position: fixed;
-    top: $skip-link-offset;
-    left: $skip-link-offset;
-    z-index: $skip-link-layer;
-    width: auto;
-    height: auto;
-    margin: 0;
-    padding: $skip-link-padding;
-    clip-path: none;
-    border-radius: $radius-m;
-    background-color: $color-white;
-    color: $color-primary-dark;
+    transform: none;
   }
 }
 
