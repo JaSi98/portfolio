@@ -56,6 +56,8 @@
     "contact.privacyError": "Bitte stimme der Datenschutzerklärung zu.",
     "contact.privacy": "Ich habe die {$START_LINK}Datenschutzerklärung{$CLOSE_LINK} gelesen und stimme der Verarbeitung meiner Daten wie beschrieben zu.",
     "contact.required": "* Pflichtfeld",
+    "contact.privacyMissing": "Bitte stimme der Datenschutzerklärung zu, um deine Nachricht zu senden.",
+    "contact.incomplete": "Bitte fülle alle Pflichtfelder korrekt aus.",
     "contact.sending": "Wird gesendet …",
     "contact.submit": "Sag Hallo ;)",
     "contact.sent": "Danke! Deine Nachricht wurde gesendet. Ich melde mich bald bei dir.",

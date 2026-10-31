@@ -73,7 +73,7 @@
         <button
           class="contact__submit"
           type="submit"
-          [disabled]="form.invalid || sendState() === 'sending'"
+          [disabled]="sendState() === 'sending'"
         >
           @if (sendState() === 'sending') {
             <ng-container i18n="@@contact.sending">Sending …</ng-container>
@@ -83,10 +83,21 @@
         </button>
         <p
           class="contact__feedback"
-          [class.contact__feedback--error]="sendState() === 'failed'"
+          [class.contact__feedback--error]="sendState() === 'failed' || sendState() === 'incomplete'"
           role="status"
         >
           @switch (sendState()) {
+            @case ('incomplete') {
+              @if (isPrivacyMissing()) {
+                <ng-container i18n="@@contact.privacyMissing"
+                  >Please accept the privacy policy to send your message.</ng-container
+                >
+              } @else {
+                <ng-container i18n="@@contact.incomplete"
+                  >Please fill in all required fields correctly.</ng-container
+                >
+              }
+            }
             @case ('sent') {
               <ng-container i18n="@@contact.sent"
                 >Thank you! Your message has been sent. I will get back to you soon.</ng-container

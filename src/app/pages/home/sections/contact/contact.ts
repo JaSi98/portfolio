@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
@@ -9,7 +9,10 @@ import { TextField } from '../../../../shared/components/text-field/text-field';
 import { minTrimmedLength, personName } from '../../../../shared/forms/text-validators';
 import { RevealOnScroll } from '../../../../shared/directives/reveal-on-scroll';
 
-export type SendState = 'idle' | 'sending' | 'sent' | 'failed';
+export type SendState = 'idle' | 'incomplete' | 'sending' | 'sent' | 'failed';
+
+// Feedback after a click on the button disappears by itself after this time.
+export const FEEDBACK_DURATION_MS = 5000;
 
 const MESSAGE_MIN_LENGTH = 10;
 const NAME_MIN_LETTERS = 2;
@@ -25,6 +28,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 })
 export class Contact {
   private readonly contactService = inject(ContactService);
+  private feedbackTimer?: ReturnType<typeof setTimeout>;
 
   protected readonly sectionId = SECTION_IDS.contact;
   protected readonly sendState = signal<SendState>('idle');
@@ -37,11 +41,21 @@ export class Contact {
     website: [''],
   });
 
-  /** Sends the message and shows whether it arrived. */
+  constructor() {
+    inject(DestroyRef).onDestroy(() => clearTimeout(this.feedbackTimer));
+  }
+
+  /** Sends the message and shows whether it arrived, or what is still missing. */
   protected async submit(): Promise<void> {
-    if (this.form.invalid || this.sendState() === 'sending') {
+    if (this.sendState() === 'sending') {
       return;
     }
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      this.showFeedback('incomplete');
+      return;
+    }
+    clearTimeout(this.feedbackTimer);
     this.sendState.set('sending');
     const { name, email, message, privacy, website } = this.form.getRawValue();
     try {
@@ -53,10 +67,22 @@ export class Contact {
         website,
       });
       this.form.reset();
-      this.sendState.set('sent');
+      this.showFeedback('sent');
     } catch {
-      this.sendState.set('failed');
+      this.showFeedback('failed');
     }
+  }
+
+  /** Tells whether the consent to the privacy policy is missing, which blocks sending. */
+  protected isPrivacyMissing(): boolean {
+    return this.form.controls.privacy.invalid;
+  }
+
+  /** Shows a feedback below the button and hides it again after a few seconds. */
+  private showFeedback(state: Exclude<SendState, 'idle' | 'sending'>): void {
+    clearTimeout(this.feedbackTimer);
+    this.sendState.set(state);
+    this.feedbackTimer = setTimeout(() => this.sendState.set('idle'), FEEDBACK_DURATION_MS);
   }
 
   /** Shows the error of a field only after the user has left it. */
